@@ -12,7 +12,11 @@ Word.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     }
-}, {
+}, 
+// {
+//     hooks:{}
+// },
+{
     sequelize,
     modelName: 'word',
     freezeTableName: true,
