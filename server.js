@@ -18,9 +18,11 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-//express built-in middleware to serve static files
+//this allows you to parse the body of the request
 app.use(express.json());
+//this allows you to use the req.body object to access the body of the request
 app.use(express.urlencoded({ extended: true }));
+// this allows you to use a static folder (unchanged files)
 app.use(express.static(path.join(__dirname, 'public')));
 
 //defined routes for the app
