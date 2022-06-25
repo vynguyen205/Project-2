@@ -4,9 +4,9 @@ const words = require("./words.json")
 
 const seedWords = async () => {
 sequelize.sync({ force: true }).then(async() => {
-    console.log('Nice! Database is synced');
+    console.log('🤝 Nice! Database is synced 🤝');
     await Word.bulkCreate(words);
-    console.log('Nice! Words are added');
+    console.log('🗄 Nice! Words are added 🗄');
 })
 }
 seedWords();
