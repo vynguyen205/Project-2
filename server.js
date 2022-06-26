@@ -6,6 +6,9 @@ const session = require('express-session');
 // const exphbs = require('express-handlebars');
 
 
+var io = socket(server);
+
+
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
