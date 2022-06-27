@@ -3,8 +3,36 @@ const express = require('express');
 const routes = require('./controllers');
 const path = require('path');
 const session = require('express-session');
-// const exphbs = require('express-handlebars');
 
+// const exphbs = require('express-handlebars');
+const socket = require('socket.io');
+
+const start = () => {
+  const server = app.listen(PORT, function() {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
+
+
+const io = socket(server, {
+  cors: {
+    origin: '*',
+  }
+});
+
+
+
+io.on('connection', (socket) => {
+   // random id 
+  console.log(socket.id)
+
+});
+
+// // clientside socket code
+// const socket = io("http://localhost:3001");
+
+// socket.on("connect", () => {
+//   displayMessage(`you connect with game id ${socket.id}`)
+// })
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -13,6 +41,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 
 //session config
 const sess = {
@@ -46,5 +75,4 @@ app.use(routes);
 // connect-session-sequelize middleware
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('👂🏻 Now listening 👂🏻'));
-  });
-  
+  });}

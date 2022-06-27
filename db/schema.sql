@@ -1,3 +1,3 @@
 -- Create a database
-DROP DATABASE IF EXISTS pictionary_db;
-CREATE DATABASE pictionary_db;
+DROP DATABASE IF EXISTS dudl_db;
+CREATE DATABASE dudl_db;
