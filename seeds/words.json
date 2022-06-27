@@ -1,6 +1,96 @@
 [
     {
-        "word": "abandon",
-        "points": 20
+        "word": "bee",
+        "points": 3
+    },
+    {
+        "word": "sandwich",
+        "points": 5
+    },
+    {
+        "word": "butterfly",
+        "points": 3
+    },
+    {
+        "word": "treasure",
+        "points": 5
+    },
+    {
+        "word": "circus",
+        "points": 5
+    },
+    {
+        "word": "rollerblades",
+        "points": 5
+    },
+    {
+        "word": "battery",
+        "points": 4
+    },
+    {
+        "word": "teapot",
+        "points": 3
+    },{
+        "word": "steering wheel",
+        "points": 5
+    },
+    {
+        "word": "glue",
+        "points": 5
+    },
+    {
+        "word": "computer",
+        "points": 2
+    },
+    {
+        "word": "pencil",
+        "points": 2
+    },{
+        "word": "keyboard",
+        "points": 4
+    },
+    {
+        "word": "watch",
+        "points": 3
+    },
+    {
+        "word": "windchime",
+        "points": 5
+    },
+    {
+        "word": "mailbox",
+        "points": 4
+    },
+    {
+        "word": "paper clip",
+        "points": 1
+    },
+    {
+        "word": "basketball",
+        "points": 2
+    },
+    {
+        "word": "umbrella",
+        "points": 3
+    },
+    {
+        "word": "microwave",
+        "points": 5
+    },
+    {
+        "word": "turtle",
+        "points": 5
+    },
+    {
+        "word": "tiger",
+        "points": 5
+    },
+    {
+        "word": "elephant",
+        "points": 5
+    },
+    {
+        "word": "jellyfish",
+        "points": 5
     }
 ]
