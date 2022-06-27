@@ -1,1 +1,124 @@
-use for project requirements 
+AIMING FOR EASY STUFF FIRST, THEN ADD HARD STUFF LATER IF NECCESSARY
+
+COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
+
+--- front end ---
+
+1. homepage
+    - how to play
+        - steps to play
+        - how to join portal
+        - how to win
+    - create a portal  !!
+    - join portal !!
+    - put in username 
+
+2. lobby (waiting for players)
+    - generated code (able to copy) !!
+        - if easier, provide a link
+    - players icon when joined !!
+        - name showing or emojis
+    - allows game settings
+        - drawing time
+    - start game button
+
+3. game room
+    - showing all players !!
+        - username
+        - icon
+        - current points
+    - drawing board !!!
+    - guess box !!
+        - chat box || something cuter
+    - exit button
+
+4. drawing board !!!!
+    - changing colors of pencil
+    - once over 
+        - showing scores
+        - showing what word it was
+5. guess box 
+    - could make it a chat box
+     - when guessed correctly, word is green
+
+6. API fetch request !!!
+
+
+
+--- backend ---
+
+1. database !!!
+    - words
+        - word points
+        - difficulty level (add later)
+    - users
+        - store scores
+        - username
+        
+2. model  !!!
+    - word
+    - users 
+        - user validation
+            - username requirements
+            - no profanity (add later)
+        - highscore validation
+            - 0 when created
+            - then keep updating
+
+3. routes !!!
+    - API 
+    - users
+    - homepage
+    - lobby
+        - portal code || link to join
+        - game settings
+    - gameroom
+
+4. functionality 
+    - function get random words for users
+    - points added for right answwers
+    - timer for drawing
+    - pencil settings
+    - allow game customization (maybe later)
+    - pulling scores from database 
+        - display in gameroom
+        - keep adding point
+        - keep updating every game until quit
+    - session storage
+        - stores their current game room link?
+5. scripts
+    1. homepage !!
+        - store username once input (session storage)
+        - join a portal once input code
+
+    2. lobby (websocket.io) !!!
+        - function to share portal code 
+        - show players icons and name once join
+            - pull from database after input form
+        - drawing time setting/guessing time
+    
+    3. game room 
+        - pull from database to get scores !!!
+            - current should be 0
+            - keep updating score after every word guessed right
+            - session storage
+        - drawing board !!! 
+            - p5.js
+                - allows continuous line on mouse click
+                - allows different colors for pencil
+                - allows clear board option || eraser
+                    - whichever is easier
+            - be able to show drawing in real time to other players !!
+                - implement websocket here
+            - only the drawer can see the word !!
+        - chat box || guess box !!! 
+            - once word is guess, show green   !!
+                - only guesser can see the correct answer once guessed !!
+        - once over !!!
+            - show points accumlated during this game !!
+            - updating the user data with new points
+            - once updated pull from database and display new score
+            - show the word
+            
+            
+            

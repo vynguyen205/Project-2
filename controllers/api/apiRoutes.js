@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //rename this later
-const { Example } = require('../../models');
+// const {  } = require('../../models');
 
 //this get routes will return all data of example table from the database
 router.get('/', async (req, res) => {
