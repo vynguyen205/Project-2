@@ -1,3 +1,14 @@
 {{! example for using useless helper function }}
-<h1>WELCOME TO MY HOME PAGE! {{example_helper}}</h1>
-<a href='/otherpage'>GO TO OTHER PAGE</a>
+<h1>WELCOME TO DUDL (homepage)! {{example_helper}}</h1>
+<main>
+    <form action="/lobby">
+        <input type="text" name="name" placeholder="portal name">
+        <button type="submit">Join Portal</button>
+
+        <p>Or create a new portal:</p>
+        <input type="text" name="name" placeholder="username">
+        <button type="submit">Create Portal</button>
+    </form>
+</main>
+{{! example for using the current_user helper function }}
+{{!-- <a href='/lobby'>GO TO OTHER PAGE</a> --}}

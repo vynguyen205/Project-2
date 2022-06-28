@@ -67,6 +67,10 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
 
 3. routes !!!
     - API 
+        - post
+            - update data 
+        - get 
+            - retrieving data
     - users
     - homepage
     - lobby
@@ -120,5 +124,15 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
             - once updated pull from database and display new score
             - show the word
             
+
+--- FOLDER ORGANIZATION ---
+
+1. config - connection.js
+2. controlers - all of the routes to our website
+3. db - schema.sql
+4. models - user and words
+5. public/css - frontend.js & css
+6. seeds - getRandomWord.js && seed (to connect to DB) && words.json (all words)
+7. views - store all of our html uses handlebars
             
             
