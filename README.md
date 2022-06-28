@@ -1,22 +1,22 @@
 # Project-2
 
-## Table of Contents
+## Table of Contents 📚
 
-- [Description] (#description)
-- [Preview] (#preview)
-- [Installation] (#installation)
-- [Usage] (#usage)
-- [Credits] (#credits)
-- [License] (#license)
+- [Description](#description)
+- [Preview](#preview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
 
-## Description 
+## Description 📋
 
-## Preview 
+## Preview 📸
 
-## Installation
+## Installation 📥
 
-## Usage
+## Usage 🖥
 
-## Credits
+## Credits 🗂
 
-## License
+## License ⚙️
