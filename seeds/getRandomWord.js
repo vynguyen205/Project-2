@@ -14,6 +14,6 @@ const getRandomWord = () => {
     );
 }
 
-getRandomWord().then(word => {
+getRandomWord().then(word => { 
     console.log(word);
 })
