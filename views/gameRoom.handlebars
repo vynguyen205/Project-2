@@ -1,5 +1,5 @@
 
-<h1> GET READY TO DUDLE <span id="room-id"></span></h1>
+<h1> GET READY TO DUDLE <span id="gameRm"></span></h1>
 <div>
     <h3> DUDLE SCORES {{highscore}}</h3>
     <p>
@@ -11,6 +11,6 @@
 </div>
 
 <script>
-    var gameRm = document.getElementById('room-id');
+    var gameRm = document.getElementById('gameRm');
     gameRm.innerHTML = window.location.pathname.split('/')[2];
 </script>
