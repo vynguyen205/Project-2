@@ -1,1 +1,8 @@
 {{!-- this is for waiting for other players to join --}}
+
+<h1>THIS IS THE ROOM ID <span id="room-id"></span></h1>
+
+<script>
+    var roomId = document.getElementById('room-id');
+    roomId.innerHTML = window.location.pathname.split('/')[2];
+</script>
