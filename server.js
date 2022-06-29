@@ -87,6 +87,14 @@ const start = () => {
           });
         }
       });
+      socket.on("create", (roomId) => {
+        console.log("creating room", roomId);
+        //check to see if someone already made a room with the same id
+
+        //if not create a new room in db, send res to client
+
+        //else send error to client
+      });
       socket.on("Disconnect", () => {
         //removing the user from the array of users connected to the server
         users = users.filter(user => user.id !== socket.id);
