@@ -1,9 +1,12 @@
 {{!-- this is for waiting for other players to join --}}
 
 <h1>THIS IS THE ROOM ID <span id="room-id"></span></h1>
-<div class="username-card">
-<p>WAITING FOR DUDLERS</p>
-    {{usernames}}
+<div>
+    <h3>DUDLERS IN ROOM CURRENTLY {{numPlayers}}</h3>
+    <p>
+        WAITING FOR FELLOW DUDLERS...
+    </p>
+    <p>ROOM ID - {{roomid}}</p>
 </div>
 
 <script>
