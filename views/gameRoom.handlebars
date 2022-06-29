@@ -1,0 +1,16 @@
+
+<h1> GET READY TO DUDLE <span id="gameRm"></span></h1>
+<div>
+    <h3> DUDLE SCORES {{highscore}}</h3>
+    <p>
+        CONCENTRATE ON THE DUDLE 
+    </p>
+    <p>
+        CURRENT DUDLE - {{word}}
+    </p>
+</div>
+
+<script>
+    var gameRm = document.getElementById('gameRm');
+    gameRm.innerHTML = window.location.pathname.split('/')[2];
+</script>

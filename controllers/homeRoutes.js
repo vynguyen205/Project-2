@@ -8,10 +8,12 @@ router.get('/', (req, res) => {
   res.render('home');
 });
 
-router.get('/lobby', (req, res) => {
+router.get('/lobby/:roomid', (req, res) => {
+  //maybe we lookup record from db using roomid
+  //
   console.log(`🕺🏼 User is in lobby`);
   //this will render the view lobby.handlebars
-  res.render('lobby');
+  res.render('lobby', {roomid: req.params.roomid, numPlayers: 54});
 });
 
 router.get('/game_room', (req, res) => {
