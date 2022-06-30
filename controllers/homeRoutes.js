@@ -16,10 +16,10 @@ router.get('/lobby/:roomid', (req, res) => {
   res.render('lobby', {roomid: req.params.roomid, numPlayers: 54});
 });
 
-router.get('/game_room', (req, res) => {
+router.get('/gameRoom', (req, res) => {
   console.log(`🎮 User is in game room`);
   //this will render the view game_room.handlebars
-  res.render('game_room');
+  res.render('gameRoom');
 })
 
 
