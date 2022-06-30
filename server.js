@@ -25,7 +25,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 //blank users object to store all the users connected to the server
 let users = [];
-//store past messages that were stored in the database
+//past messages that were stored in the database
 const messages = {
   general: [],
   random: [],
