@@ -8,18 +8,14 @@
     </p>
     <p>ROOM ID - {{roomid}}</p>
     <p>CLICK THE BUTTON TO START YOUR GAME</p>
-    <button id='btn' type="button" onclick="startGame(); return false;">CLICK ME!</button>
+    <button id='btn' type="button" onclick="startGame();">CLICK ME!</button>
 </div>
 
 <script>
     var roomId = document.getElementById('room-id');
     roomId.innerHTML = window.location.pathname.split('/')[2];
 
-    var button = document.getElementById('btn');
-    button.innerHTML = window.location = 'http://localhost:3001/gameRoom';
-    
-
-    
-
-            
+    var startGame = document.getElementById('btn');
+    startGame.innerHTML = window.location.href = 'http://localhost:3001/gameRoom';
+                
 </script>
