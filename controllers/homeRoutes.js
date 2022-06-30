@@ -1,6 +1,5 @@
 //These are all the view routes for your application
 const router = require('express').Router();
-
 //when a GET request is received on the root(/) route,
 //render the home.handlebars view
 router.get('/', (req, res) => {
@@ -8,7 +7,7 @@ router.get('/', (req, res) => {
   res.render('home');
 });
 
-router.get('/lobby/:roomid', (req, res) => {
+router.get(`/lobby/:roomid`, (req, res) => {
   //maybe we lookup record from db using roomid
   //
   console.log(`🕺🏼 User is in lobby`);

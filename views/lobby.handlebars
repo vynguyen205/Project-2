@@ -1,15 +1,25 @@
 {{!-- this is for waiting for other players to join --}}
 
-<h1>THIS IS THE ROOM ID <span id="room-id"></span></h1>
+<h1>WELCOME TO ROOM {{roomid}} </h1>
 <div>
     <h3>DUDLERS IN ROOM CURRENTLY {{numPlayers}}</h3>
     <p>
         WAITING FOR FELLOW DUDLERS...
     </p>
     <p>ROOM ID - {{roomid}}</p>
+    <p>CLICK THE BUTTON TO START YOUR GAME</p>
+    <button id='btn' type="button" onclick="startGame(); return false;">CLICK ME!</button>
 </div>
 
 <script>
     var roomId = document.getElementById('room-id');
     roomId.innerHTML = window.location.pathname.split('/')[2];
+
+    var button = document.getElementById('btn');
+    button.innerHTML = window.location = 'http://localhost:3001/gameRoom';
+    
+
+    
+
+            
 </script>

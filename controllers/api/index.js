@@ -2,8 +2,8 @@ const router = require('express').Router();
 const wordsRoute = require('./wordsRoute');
 // const userRoutes = require('./userRoutes');
 // const { route } = require('./wordsRoute');
-const gameRoomRoute = require('./homeRoutes');
-const lobbyRoute = require('./homeRoutes');
+const gameRoomRoute = require('../homeRoutes');
+const lobbyRoute = require('../homeRoutes');
 
 router.use('/words', wordsRoute);
 // router.use('/users', userRoutes);
