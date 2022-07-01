@@ -2,6 +2,8 @@ const socket = io();
 
 socket.on ('connect', () => {
   console.log('⛓ Connected to server');
+  //this creates a user
+  socket.emit('💃🏻 Join Server', {username: "chad", avatar: "something"})
 });
 
 
