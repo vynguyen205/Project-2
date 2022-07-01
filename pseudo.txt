@@ -6,9 +6,9 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
 
 1. homepage
     - how to play
-        - steps to play
-        - how to join portal
-        - how to win
+        - steps to play ✔️
+        - how to join portal ✔️
+        - how to win ✔️
     - create a portal  !!
     - join portal !!
     - put in username 
@@ -41,22 +41,22 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
     - could make it a chat box
      - when guessed correctly, word is green
 
-6. API fetch request !!!
+6. API fetch request !!! ✔️
 
 
 
 --- backend ---
 
 1. database !!!
-    - words
-        - word points
+    - words ✔️
+        - word points ✔️
         - difficulty level (add later)
     - users
         - store scores
         - username
         
 2. model  !!!
-    - word
+    - word ✔️
     - users 
         - user validation
             - username requirements
@@ -66,17 +66,17 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
             - then keep updating
 
 3. routes !!!
-    - API 
-        - post
+    - API ✔️
+        - post ✔️
             - update data 
-        - get 
+        - get ✔️
             - retrieving data
     - users
-    - homepage
-    - lobby
+    - homepage ✔️
+    - lobby ✔️
         - portal code || link to join
         - game settings
-    - gameroom
+    - gameroom ✔️
 
 4. functionality 
     - function get random words for users
