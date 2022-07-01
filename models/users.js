@@ -22,8 +22,21 @@ User.init ({
     highscore: {
         type: DataTypes.INTEGER,
         allowNull: false,
-
     },
+    avatar: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    room_id: {
+        type: DataTypes.INTEGER,
+        references: { 
+            model: 'room',
+            key: 'id',
+            unique: false
+        }
+    }
+
 },
 {
     hooks: {

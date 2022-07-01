@@ -22,10 +22,16 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', hbs.engine); 
 app.set('view engine', 'handlebars');
 
+// this allows you to parse the body of the request
+app.use(express.json());
+// // this allows you to use the req.body object to access the body of the request
+app.use(express.urlencoded({ extended: true }));
+// this allows you to use a static folder (unchanged files)
 app.use(express.static(path.join(__dirname, 'public')));
+
 //blank users object to store all the users connected to the server
 let users = [];
-//store past messages that were stored in the database
+//past messages that were stored in the database
 const messages = {
   general: [],
   random: [],
@@ -47,12 +53,13 @@ const start = () => {
         //adding the new user to the array of users connected to the server
         users.push(user);
         //broadcasting the user to all other users. letting them know that a new user has joined
-        socket.broadcast.emit("New User", users);
+        socket.broadcast.emit("New User: ", users);
       });
       //setting up event for when user joins room
       socket.on("Join Room", (roomName, cb) => {
         socket.join(roomName);
         // this function is to ensure when a user joins late, they get the messages that were already stored in the messages object
+        //this callback function is for front end to render the messages
         cb(messages[roomName]);
       });
     
@@ -108,11 +115,11 @@ const start = () => {
 };
 
 //settinng up event for when user connects
-    //session config
+//session config
 // const sess = {
-  //   secret: 'Super secret secret',
-  //   cookie: {
-    //     maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // 2 weeks (just an example, you can decide how long to keep session alive)
+//     secret: 'Super secret secret',
+//     cookie: {
+//         maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // 2 weeks (just an example, you can decide how long to keep session alive)
 //   },
 //   resave: false,
 //   saveUninitialized: true,
@@ -124,11 +131,6 @@ const start = () => {
 // app.use(session(sess));
 
 
-// this allows you to parse the body of the request
-// app.use(express.json());
-// // this allows you to use the req.body object to access the body of the request
-// app.use(express.urlencoded({ extended: true }));
-// this allows you to use a static folder (unchanged files)
 
 //defined routes for the app
 app.use(routes);

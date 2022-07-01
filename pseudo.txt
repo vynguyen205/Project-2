@@ -90,6 +90,11 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
         - keep updating every game until quit
     - session storage
         - stores their current game room link?
+    - room name validation
+        - make sure there's not 2 of the same room name
+        - alert user to pick a new name
+        - write code in database to keep that from happening
+    - allow users to create their own room name || have the room name randomly generated
 5. scripts
     1. homepage !!
         - store username once input (session storage)
