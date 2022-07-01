@@ -3,70 +3,26 @@
 <main>
   <h3>Before you can play, you need to join a portal or create a new one!</h3>
   <p>If you received a portal invite, type the portal name below:</p>
-    <input type="text" placeholder="portal name">
-    <button type="submit">Join Portal</button>
+  <input type='text' placeholder='portal name' />
+  <button type='submit'>Join Portal</button>
 
-    <p>Or create a new portal:</p>
-    <input type="text" id="create-portal" name="name" placeholder="Portal Name">
-    <button id="create-room-btn">Create Portal</button>
-    <br>
-    <button id="random-room-btn">Random Portal</button>
+  <p>Or create a new portal:</p>
+  <input type='text' id='create-portal' name='name' placeholder='Portal Name' />
+  <br>
+  <button id='create-room-btn'>Create Portal</button>
+  <button id='random-room-btn'>Random Portal</button>
 </main>
 <container>
-  <div
-    {{!-- class='panel-group informationTabs'
-    id='accordion'
-    style='margin:0;padding:8px;'
-    role='tablist'
-    aria-multiselectable='true' --}}
-  >
-    <div id='tabAbout' role='tab'>
-      <h3><a
-          {{!-- role='button'
-          data-toggle='collapse'
-          data-parent='#accordion'
-          href='#collapseAbout'
-          aria-expanded='false'
-          aria-controls='collapseAbout'
-          class='collapsed' --}}
-       >About</a></h3>
-    </div>
-    <div
-      {{!-- class='panel-collapse collapse'
-      id='collapseAbout'
-      role='tabpanel'
-      aria-labelledby='tabAbout'
-      aria-expanded='false'
-      style='height: 0px;' --}}
-      >
-      <b>DÜDL</b>
-      IS A MULTIPLAYER DRAWING AND GUESSING GAME. ONE GAME CONSIST OF ROUNDS
-      WHERE PLAYERS TAKE TURNS DRAWING A WORD WHILE THE OTHERS TRY AND GUESS IT
-      TO GAIN POINTS. AT THE END OF EACH ROUND, THE PLAYER WITH THE MOST POINTS
-      WINS!!
-    </div>
-    <div id='tabHow' role='tab'>
-      <h3><a
-          {{!-- class='collapsed'
-          role='button'
-          data-toggle='collapse'
-          data-parent='#accordion'
-          href='#collapseHow'
-          aria-expanded='false'
-          aria-controls='collapseHow' --}}
-        >How to Play</a></h3>
-    </div>
-    <div
-      {{!-- class='panel-collapse collapse'
-      id='collapseHow'
-      role='tabpanel'
-      aria-labelledby='tabHow'
-      aria-expanded='false'
-      style='height: 0px;' --}}
-    >IF ITS YOUR TURN AS THE DÜDLER, YOU WILL CHOOSE A WORD AND THEN HAVE
-    90 SECONDS TO DRAW THAT WORD. OR, IF YOU'RE GUESSING, TYPE YOUR GUESS 
-    IN THE CHAT TO GAIN POINTS. OH AND THINK FAST, BECAUSE THE QUICKER 
-    YOU ANSWER THE MORE POINTS YOU WILL GET!!</div>
+  <div>
+    <h3>About</h3>
+    <p><b>DÜDL</b> is a multiplayer drawing and guessing game. One game consists of 
+    rounds where players take turns drawing a word while the other players try and guess 
+    it to gain points. At the end of each round, the player with the most points wins!! </p>
+    <br>
+    <h3>How to Play</h3>
+    <p>If it's your turn as the DÜDLER, you will choose a word and then have 90 seconds
+    to draw that word. Or, if you're guessing, type your guess in the chat to gain points.
+    Oh and think fast, because the quicker you answer the more points you will get!!</p>
   </div>
 </container>
 
