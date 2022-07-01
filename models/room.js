@@ -19,16 +19,6 @@ Room.init({
         }
     }
 },
-    {
-        hooks: {
-            //if no username is provided, set it to be anonymous
-            beforeCreate: async (user) => {
-                if (!Rooms.roomName) {
-                    user.username = 'anonymous';
-                }
-            },
-        },
-    },
 {
         sequelize,
         timestamps: false,
