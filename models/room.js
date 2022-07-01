@@ -37,3 +37,5 @@ Rooms.init({
         modelName: 'room',
     },
 )
+
+module.exports = Room;
