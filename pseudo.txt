@@ -140,4 +140,13 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
 6. seeds - getRandomWord.js && seed (to connect to DB) && words.json (all words)
 7. views - store all of our html uses handlebars
             
+
+make a post request, grab dta from frontend and goes to body of that req and send it to the backend and backend will insert into database
             
+---Rooms---
+1. have all rooms available on the homepage
+2. private and public room
+    - password (room validation)
+    - validate the pasword n the frontend
+3. session for the ROOM. last 1 day
+4. attaching room-id to the user

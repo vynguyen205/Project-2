@@ -10,17 +10,21 @@ socket.on ('connect', () => {
 
 // button connecting to backend to create a room and send the room id to the frontend
 const btn = document.querySelector('#create-room-btn');
-const username = document.querySelector('#username').value.trim();
+
 btn.addEventListener('click', function (e) {
-    const roomId = document.querySelector("#create-portal").value.trim();
-    //create ws room on server first
-    console.log("ROOM ID", roomId);
+    
+    const fetchData = await fetch(`http://localhost:3001/${url}`,{
+      method: "POST",
+      // body: {
+      //   username: variable,
+      //   // ...allThecolsInTheModel-id
+      // }
+    })
+    const dataReturn = await fetchData.json();
 
     socket.emit('create', roomId);
 });
 
-const randomRoomBtn = document.querySelector('#random-room-btn');
-randomRoomBtn.addEventListener('click', function (e) {
-    const randomRoomId = 
-    socket.emit('create', randomRoomId);
-  });
+getData(`api/words`).then(data => console.log(data))
+
+console.log("loaded")
