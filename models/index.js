@@ -4,9 +4,7 @@ const Word = require('./words');
 const User = require('./users');
 
 //has many
-Room.hasMany(User, {
-    foreignKey: 'room_id'
-});
+
 //belongs to
 User.belongsTo(Room, {
     foreignKey: 'room_id',

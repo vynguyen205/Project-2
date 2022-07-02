@@ -12,11 +12,11 @@ Room.init({
     },
     roomName: {
         type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-            len: [2, 255]
-        }
     }
 },
 {

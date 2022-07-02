@@ -1,4 +1,5 @@
 const socket = io();
+const fetchAPIURL = 'http://localhost:3000/';
 
 socket.on ('connect', () => {
   console.log('⛓ Connected to server');
@@ -10,17 +11,22 @@ socket.on ('connect', () => {
 
 // button connecting to backend to create a room and send the room id to the frontend
 const btn = document.querySelector('#create-room-btn');
-const username = document.querySelector('#username').value.trim();
-btn.addEventListener('click', function (e) {
-    const roomId = document.querySelector("#create-portal").value.trim();
-    //create ws room on server first
-    console.log("ROOM ID", roomId);
+// const createUsername = document.querySelector('#create-username').value.trim();
+const createRoomName = document.querySelector('#create-room-name').value.trim();
+const createRoomPassword = document.querySelector('#create-room-password').value.trim();
 
-    socket.emit('create', roomId);
+btn.addEventListener('click', async function (e) {
+    
+    const fetchData = await fetch(`${fetchAPIURL}game_room/create`,{
+      method: "POST",
+      body: {
+        roomName: createRoomName,
+        password: createRoomPassword,
+      }
+    })
+    const dataReturn = await fetchData.json();
+    console.log(dataReturn);
+    socket.emit('create', roomName);
 });
 
-const randomRoomBtn = document.querySelector('#random-room-btn');
-randomRoomBtn.addEventListener('click', function (e) {
-    const randomRoomId = 
-    socket.emit('create', randomRoomId);
-  });
+// getData(`api/words`).then(data => console.log(data))
