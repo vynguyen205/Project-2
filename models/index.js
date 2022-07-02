@@ -1,0 +1,13 @@
+const Room = require('./room');
+const Word = require('./words');
+// const rounds = require('./rounds');
+const User = require('./users');
+
+//has many
+
+//belongs to
+User.belongsTo(Room, {
+    foreignKey: 'room_id',
+})
+
+module.exports = {Room, Word, User}

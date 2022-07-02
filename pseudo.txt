@@ -6,9 +6,9 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
 
 1. homepage
     - how to play
-        - steps to play
-        - how to join portal
-        - how to win
+        - steps to play ✔️
+        - how to join portal ✔️
+        - how to win ✔️
     - create a portal  !!
     - join portal !!
     - put in username 
@@ -41,22 +41,22 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
     - could make it a chat box
      - when guessed correctly, word is green
 
-6. API fetch request !!!
+6. API fetch request !!! ✔️
 
 
 
 --- backend ---
 
 1. database !!!
-    - words
-        - word points
+    - words ✔️
+        - word points ✔️
         - difficulty level (add later)
     - users
         - store scores
         - username
         
 2. model  !!!
-    - word
+    - word ✔️
     - users 
         - user validation
             - username requirements
@@ -66,17 +66,17 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
             - then keep updating
 
 3. routes !!!
-    - API 
-        - post
+    - API ✔️
+        - post ✔️
             - update data 
-        - get 
+        - get ✔️
             - retrieving data
     - users
-    - homepage
-    - lobby
+    - homepage ✔️
+    - lobby ✔️
         - portal code || link to join
         - game settings
-    - gameroom
+    - gameroom ✔️
 
 4. functionality 
     - function get random words for users
@@ -90,6 +90,11 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
         - keep updating every game until quit
     - session storage
         - stores their current game room link?
+    - room name validation
+        - make sure there's not 2 of the same room name
+        - alert user to pick a new name
+        - write code in database to keep that from happening
+    - allow users to create their own room name || have the room name randomly generated
 5. scripts
     1. homepage !!
         - store username once input (session storage)
@@ -135,4 +140,13 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
 6. seeds - getRandomWord.js && seed (to connect to DB) && words.json (all words)
 7. views - store all of our html uses handlebars
             
+
+make a post request, grab dta from frontend and goes to body of that req and send it to the backend and backend will insert into database
             
+---Rooms---
+1. have all rooms available on the homepage
+2. private and public room
+    - password (room validation)
+    - validate the pasword n the frontend
+3. session for the ROOM. last 1 day
+4. attaching room-id to the user

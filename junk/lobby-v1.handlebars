@@ -1,0 +1,22 @@
+{{!-- this is for waiting for other players to join --}}
+
+<h1>WELCOME TO ROOM {{roomid}} </h1>
+<div>
+    <h3>DÜDLERS IN ROOM CURRENTLY {{numPlayers}}</h3>
+    <p>
+        WAITING FOR FELLOW DÜDLERS...
+    </p>
+    <p>ROOM ID - {{roomid}}</p>
+    <p>CLICK THE BUTTON TO START YOUR GAME</p>
+    <a href='/game_room'>
+        <button class="btn">
+            CLICK ME!
+        </button>
+    </a>
+    
+</div>
+
+<script>
+    var roomId = document.getElementById('room-id');
+    roomId.innerHTML = window.location.pathname.split('/')[2];
+</script>
