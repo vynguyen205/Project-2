@@ -34,6 +34,7 @@
     "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
+    "@types/socket.io": "^3.0.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.7.1"
