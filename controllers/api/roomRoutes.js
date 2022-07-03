@@ -38,6 +38,7 @@ router.get(`/:roomid`, async (req, res) => {
     const createRoom = await Room.create(req.body);
     res.status(200).json(createRoom);
     console.log(createRoom);
+    res.redirect(`rooms/${createRoom.id}`);
     } catch (err) {
         res.status(500).json(err);
     }
