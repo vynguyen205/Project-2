@@ -9,3 +9,5 @@ async function getData(url) {
     const dataReturn = await fetchData.json();
     return dataReturn;
 }
+
+getData ();
