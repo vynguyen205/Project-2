@@ -1,32 +1,79 @@
-const socket = io();
-const fetchAPIURL = 'http://localhost:3000/';
+//DOM ELEMENTS
+//create room DOM elements
+const createRoomBtn = document.querySelector('#create-room-btn');
+const createRoomName = document.querySelector('#create-room-name');
+const createRoomPassword = document.querySelector('#create-room-password');
+//join room DOM elements
+const joinRoomBtn = document.querySelector('#join-room-btn');
+const joinRoomName = document.querySelector('#join-room-name');
+const joinRoomPass = document.querySelector('#join-room-password');
 
-socket.on ('connect', () => {
+//adds a new user to the server
+let users = [];
+
+const socket = io();
+socket.on ('connection', () => {
   console.log('⛓ Connected to server');
   //this creates a user
-  socket.emit('💃🏻 Join Server', {username: "chad", avatar: "something"})
 });
+socket.emit('💃🏻 Join Server', socket.id);
+
+const createRoom = async () => {
+  const room_name = createRoomName.value.trim();
+  const roomPassword = createRoomPassword.value.trim();
+
+  const fetchData = await fetch(`api/rooms/`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            roomName: room_name,
+            password: roomPassword,
+          })
+        })
+        console.log(fetchData)
+        const dataReturn = await fetchData.json();
+        console.log(dataReturn);
 
 
+  socket.emit('createRoom', {room_name, roomPassword});
+  //checkiing for null values
+  if (room_name === '' || roomPassword === '') {
+    alert('Please enter a room name and password'); 
+  }
+  //redirect to the room
+  window.location.href = `api/rooms/${room_name}`;
 
-// button connecting to backend to create a room and send the room id to the frontend
-const btn = document.querySelector('#create-room-btn');
-// const createUsername = document.querySelector('#create-username').value.trim();
-const createRoomName = document.querySelector('#create-room-name').value.trim();
-const createRoomPassword = document.querySelector('#create-room-password').value.trim();
+}
 
-btn.addEventListener('click', async function (e) {
-    
-    const fetchData = await fetch(`${fetchAPIURL}game_room/create`,{
-      method: "POST",
-      body: {
-        roomName: createRoomName,
-        password: createRoomPassword,
-      }
-    })
-    const dataReturn = await fetchData.json();
-    console.log(dataReturn);
-    socket.emit('create', roomName);
-});
+const joinRoomFunction = async () => {
+  const room_name = joinRoomName.value.trim();
+  const roomPassword = joinRoomPass.value.trim();
 
-// getData(`api/words`).then(data => console.log(data))
+  const fetchData = await fetch(`api/rooms/`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            roomName: room_name,
+            password: roomPassword,
+          })
+        })
+        console.log(fetchData)
+        const dataReturn = await fetchData.json();
+        console.log(dataReturn);
+
+  socket.emit('Join Room', {room_name, roomPassword});
+  //checkiing for null values
+  if (room_name === '' || roomPassword === '') {
+    alert('Please enter a room name and password'); 
+  }
+  //redirect to the room
+  window.location.href = `api/rooms/${room_name}`;
+}
+
+createRoomBtn.addEventListener('click', createRoom);
+joinRoomBtn.addEventListener('click', joinRoomFunction);
+

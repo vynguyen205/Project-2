@@ -17,7 +17,7 @@
       </header>
       <main class="chat-main">
         <div class="chat-sidebar">
-          <h3><i class="fas fa-comments"></i> Room Name: {{room-name}}</h3>
+          <h3><i class="fas fa-comments"></i> Room Name: {{roomName}}</h3>
           <h2 id="room-name"></h2>
           <h3><i class="fas fa-users"></i> Users</h3>
           <ul id="users"></ul>
@@ -37,21 +37,6 @@
         </form>
       </div>
     </div>
-
-    <section class="container">
-        <div id="toolbar">
-            <h1>Draw</h1>
-            <label for="stroke">Stroke</label>
-            <input id="stroke" name="'stroke" type="color">
-            <label for="lineWidth">Line Width</label>
-            <input id="lineWidth" name="lineWidth" type="number" value="5">
-            <button id="clear">Clear</button>
-        </div>
-
-        <div class="drawing-board">
-            <canvas id="drawing-board"></canvas>
-        </div>
-    </section>
 
 {{!-- <script>
     var gameRm = document.getElementById('gameRm');

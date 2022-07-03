@@ -12,12 +12,19 @@ Room.init({
     },
     roomName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
+    },
+
+    // numOfPlayers: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: true
+    // },
+
 },
 {
         sequelize,

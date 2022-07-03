@@ -31,7 +31,7 @@
     "nodemon": "^2.0.18",
     "sequelize": "^6.3.5",
     "socket.io": "^4.5.1",
-    "socket.io-client": "^2.1.1"
+    "socket.io-client": "^2.5.0"
   },
   "devDependencies": {
     "@types/socket.io": "^3.0.2",
