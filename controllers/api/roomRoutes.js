@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Room = require('../../models/room');
+const { Room, User } = require('../../models');
 const Word = require('../../models/words');
 
 //get all rooms
@@ -13,32 +13,36 @@ router.get('/', async (req, res) => {
 });
 
 //get one room
-router.get(`/:roomid`, async (req, res) => {
+router.get(`/:roomName`, async (req, res) => {
     try {
         const roomData = await Room.findOne(req.params.id,{
         });
-        //this will render the view lobby.handlebars
-    res.render('game_room', {roomid: req.params.roomid, numOfPlayers: 54});
     //maybe we lookup record from db using roomid
     console.log(`🧸 User is in game room`);
 
     if (!roomData) {
-        res.status(404).json({ message: 'Room not found' });
-        return;
+      res.status(404).json({ message: 'Room not found' });
+      return;
     }
-    res.status(200).json(roomData);
-    } catch (err) {
+    //render the view game-room.handlebars
+    res.status(200).render('game_room', {roomName: req.params.roomName});
+
+  } catch (err) {
         res.status(500).json(err);
     }
   });
-  
   //create room
   router.post(`/`, async (req, res) => {
     try {
-    const createRoom = await Room.create(req.body);
+    const createRoom = await Room.create({
+      room_name: req.body.room_name,
+      password: req.body.password,
+    },
+    {
+      include: [{model: User}],
+      attribute: ['room_name', 'password']
+    })
     res.status(200).json(createRoom);
-    console.log(createRoom);
-    res.redirect(`rooms/${createRoom.id}`);
     } catch (err) {
         res.status(500).json(err);
     }
