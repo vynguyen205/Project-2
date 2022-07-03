@@ -4,20 +4,14 @@ const { User, Room } = require('../../models');
 // Get route for retrieving users inside of a room
 router.get('/', async (req, res) => {
     try {
-      const room = await Room.findOne({
-        include: [{model: Room}],
-        attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
-        where: {id: req.body.room_id}
-      });
-      if (!room) {
-        return res.status(404).json({ message: 'Room not found' });
-      }
-      
-      const userData = await room.getUsers();
+      const userData = await User.findAll();
 
       console.log('userData', userData);
       res.status(200).json(userData);
-
+      // const room = await Room.findOne({
+        // include: [{model: Room}],
+        // attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
+        // where: {id: req.body.room_id}
     } catch (err) {
         res.status(500).json(err);
     }
@@ -57,26 +51,25 @@ router.get('/:room_id', async (req, res) => {
 // Create user from inside of a room
 router.post('/', async (req, res) => {
   try{
-    const roomData = await Room.findOne({
-      include: [{model: User}],
-      where: {id: req.body.room_id}
-    })
+    // const roomData = await Room.findOne({
+    //   // include: [{model: User}],
+    //   // where: {id: req.body.room_id}
+    // })
 
-    if (!roomData) {
-      res.status(404).json({ message: 'Room not found' });
-      return;
-    }
+    // if (!roomData) {
+    //   res.status(404).json({ message: 'Room not found' });
+    //   return;
+    // }
 
-    const userData = await User.create(
-      {
-        username: req.body.username,
-        socket_id: req.body.socket_id,
-      },
-      {
-        include: [{model: Room}],
-        attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
-      }
-    );
+    const userData = await User.create((req.body));
+      // {
+      //   username: req.body.username,
+      //   socket_id: req.body.socket_id,
+      // },
+      // {
+      //   include: [{model: Room}],
+      //   attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
+      // }
 
     res.status(200).json(userData);
 

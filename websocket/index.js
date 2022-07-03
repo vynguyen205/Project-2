@@ -13,10 +13,10 @@ const createWSEvents = async io => {
             console.log(chalk.green(`Client Connected`, socket.id));
         
             socket.on("createRoom", ({room_name}, user) => {
-                const newUser = {
-                    user_id: user.id,
-                    socket_id: socket.id,
-                }
+                // const newUser = {
+                //     user_id: user.id,
+                //     socket_id: socket.id,
+                // }
                 //check to see if someone already made a room with the same id
                 if(room_name === room_name) {
                     console.log(chalk.red("Room already exists"));
