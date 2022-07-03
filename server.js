@@ -62,6 +62,6 @@ const messages = {
 //defined routes for the app
 app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   server.listen(PORT, () => console.log(chalk.greenBright(`🌎 API Server now listening on http://localhost:${PORT} 🌎`)));
 });

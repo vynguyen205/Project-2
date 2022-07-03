@@ -17,7 +17,13 @@ Room.init({
     password: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
+    },
+
+    // numOfPlayers: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: true
+    // },
+
 },
 {
         sequelize,

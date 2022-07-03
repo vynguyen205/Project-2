@@ -3,14 +3,13 @@ const User = require('../../models/users');
 
 // Get route for retrieving users
 router.get('/', async (req, res) => {
-  const userData = await User.findByPk;
-  console.log('userData', userData);
-  return res.json(userData);
-});
-
-router.post('/', async (req, res) => {
-  const userData = await User.create(req.params.user);
-  return res.json(userData);
+    try {
+      const userData = await User.findAll();
+      console.log('userData', userData);
+      res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 //Get data from users model (id, socket_id, username, highscore, avatar, room_id)
@@ -46,8 +45,33 @@ router.get('/:room_id', async (req, res) => {
 
 // Create user from user data that was pulled from users model 
 router.post('/', async (req, res) => {
-  const userData = await User.create(req.body);
-  return res.json(userData);
+  try{
+    const userData = await User.create(req.body);
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+//DELETE user
+router.delete('/:id', async (req, res) => {
+  try {
+    const userData = await userData.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user found with this id!' });
+      return;
+    }
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
