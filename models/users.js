@@ -10,6 +10,10 @@ User.init ({
         primaryKey: true,
         autoIncrement: true
     },
+    socket_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     username: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,23 +25,21 @@ User.init ({
     },
     highscore: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-
+        defaultValue: 0
     },
-},
-{
-    hooks: {
-        //if no username is provided, set it to be anonymous
-        beforeCreate: async (user) => {
-            if (!user.username) {
-                user.username = 'anonymous';
-            }
-        }, 
-        //if no highscore is provided, set it to be 0
-        beforeUpdate: async (user) => {
-            user.highscore = 0;
+    avatar: {
+        type: DataTypes.STRING,
+    },
+    room_id: {
+        type: DataTypes.INTEGER,
+        references: { 
+            model: 'room',
+            key: 'id',
+            unique: false
         },
+        allowNull: true
     }
+
 },
 {
     sequelize,
