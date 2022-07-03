@@ -1,15 +1,19 @@
+// const res = require("express/lib/response");
+
+// const { redirect } = require("express/lib/response");
+
 const socket = io();
 
 socket.on ('connect', () => {
   console.log('⛓ Connected to server');
   //this creates a user
-  socket.emit('💃🏻 Join Server', {username: "chad", avatar: "something"})
+  // socket.emit('💃🏻 Join Server', {username: "chad", avatar: "something"})
 });
+
+
 
 //adds a new user to the server
 let users = [];
-
-
 
 // button connecting to backend to create a room and send the room id to the frontend
 const btn = document.querySelector('#create-room-btn');
@@ -35,21 +39,21 @@ const createRoom = async () => {
         const dataReturn = await fetchData.json();
         console.log(dataReturn);
 
+
   socket.emit('createRoom', {room_name, roomPassword});
+  //checkiing for null values
+  if (room_name === '' || roomPassword === '') {
+    alert('Please enter a room name and password');
+  } else if 
+  //checking for duplicate room names
+  (room_name === room_name) {
+    alert('Room name already exists');
+  } else {
+  //redirect to the room
+  window.location.href = `api/rooms/${room_name}`;
+  }
+
 }
 
-// btn.addEventListener('click', async function (e) {
-  
-//     const fetchData = await fetch(`http://localhost:3001/api/rooms/`,{
-//       method: "POST",
-//       body: {
-//         roomName: createRoomName.value.trim(),
-//         password: createRoomPassword.value.trim(),
-//       }
-//     })
-//     const dataReturn = await fetchData.json();
-//     console.log(dataReturn);
-//     socket.emit('create', roomName);
-// });
 
 btn.addEventListener('click', createRoom);

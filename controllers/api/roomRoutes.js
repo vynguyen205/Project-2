@@ -13,12 +13,12 @@ router.get('/', async (req, res) => {
 });
 
 //get one room
-router.get(`/:roomid`, async (req, res) => {
+router.get(`/:roomName`, async (req, res) => {
     try {
         const roomData = await Room.findOne(req.params.id,{
         });
-        //this will render the view lobby.handlebars
-    res.render('game_room', {roomid: req.params.roomid, numOfPlayers: 54});
+        // req.render('game_room', {room_id: roomData.room_id});  
+      //this will render the view game-room.handlebars
     //maybe we lookup record from db using roomid
     console.log(`🧸 User is in game room`);
 
@@ -26,8 +26,8 @@ router.get(`/:roomid`, async (req, res) => {
         res.status(404).json({ message: 'Room not found' });
         return;
     }
-    res.status(200).json(roomData);
-    } catch (err) {
+      res.status(200).json(roomData);
+  } catch (err) {
         res.status(500).json(err);
     }
   });
@@ -37,8 +37,7 @@ router.get(`/:roomid`, async (req, res) => {
     try {
     const createRoom = await Room.create(req.body);
     res.status(200).json(createRoom);
-    console.log(createRoom);
-    res.redirect(`rooms/${createRoom.id}`);
+    // res.render('game_room', {roomName: req.body.roomName});
     } catch (err) {
         res.status(500).json(err);
     }
