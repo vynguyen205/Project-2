@@ -20,10 +20,10 @@ router.get(`/:roomName`, async (req, res) => {
     //maybe we lookup record from db using roomid
     console.log(`🧸 User is in game room`);
 
-    if (!roomData) {
-      res.status(404).json({ message: 'Room not found' });
-      return;
-    }
+    // if (!roomData) {
+    //   res.status(404).json({ message: 'Room not found' });
+    //   return;
+      // }
     //render the view game-room.handlebars
     res.status(200).render('game_room', {roomName: req.params.roomName});
 
