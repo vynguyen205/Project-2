@@ -41,6 +41,14 @@ User.init ({
     }
 
 },
+// {
+//     hooks: {
+//         beforeCreate(user) {
+//             //setting the username to be socket_id if it's not set yet
+//             username = user.socket_id.split('_')[0];
+//         },
+//     }
+// },  
 {
     sequelize,
     timestamps: false,

@@ -1,12 +1,17 @@
 const router = require('express').Router();
-const User = require('../../models/users');
+const { User, Room } = require('../../models');
 
-// Get route for retrieving users
+// Get route for retrieving users inside of a room
 router.get('/', async (req, res) => {
     try {
       const userData = await User.findAll();
+
       console.log('userData', userData);
       res.status(200).json(userData);
+      // const room = await Room.findOne({
+        // include: [{model: Room}],
+        // attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
+        // where: {id: req.body.room_id}
     } catch (err) {
         res.status(500).json(err);
     }
@@ -43,11 +48,31 @@ router.get('/:room_id', async (req, res) => {
   return res.json(userData);
 });
 
-// Create user from user data that was pulled from users model 
+// Create user from inside of a room
 router.post('/', async (req, res) => {
   try{
-    const userData = await User.create(req.body);
+    // const roomData = await Room.findOne({
+    //   // include: [{model: User}],
+    //   // where: {id: req.body.room_id}
+    // })
+
+    // if (!roomData) {
+    //   res.status(404).json({ message: 'Room not found' });
+    //   return;
+    // }
+
+    const userData = await User.create((req.body));
+      // {
+      //   username: req.body.username,
+      //   socket_id: req.body.socket_id,
+      // },
+      // {
+      //   include: [{model: Room}],
+      //   attributes: ['id', 'socket_id', 'username', 'avatar', 'highscore'],
+      // }
+
     res.status(200).json(userData);
+
   } catch (err) {
     res.status(500).json(err);
   }
