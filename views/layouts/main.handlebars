@@ -9,18 +9,26 @@
       integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/style.css" />
     <title>Düdl</title>
     
   </head>
   <body>
     {{! this is the main html file wrapper for all your views }}
-    <h1>DÜDL</h1>
-
+  <div class="level-left">
+    <h1 class="title" style="font-size: 52px;">DÜDL</h1>
+  </div>
     {{! placeholder for where the view will be injected }}
     {{{body}}}
 
-    <footer>THIS IS A FOOTER</footer>
+    <footer class="footer" style="padding: 10px; border: 10px;">
+  <div class="content has-text-centered">
+    <p>
+      <strong> Made with ❤️ by The Coding Addicts </a></strong>
+    </p>
+  </div>
+</footer>
     {{! placeholder for where the view will be injected }}
   </body>
   <script src='/js/fetch.js'></script>

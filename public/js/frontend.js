@@ -88,7 +88,7 @@ var checkForm = function(e)
   {
     var form = (e.target) ? e.target : e.srcElement;
     if(form.name.value == "") {
-      alert("Please enter your Name");
+      alert("Please enter your username");
       form.name.focus();
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       return;
@@ -151,21 +151,28 @@ var checkForm = function(e)
   };
 
   // Create new user 
-const newUser = async () => {
-  const newUser = await fetch(`/api/users/`, { 
+const newUserFunction = async () => {
+  const new_user = createNewUser.value.trim();
+
+  const fetchData = await fetch(`/api/users/`, { 
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      newUser: newUsername,
+      newUser: new_user,
     })
   })
   console.log(fetchData)
   const dataReturn = await fetchData.json();
   console.log(dataReturn);
 
-  socket.emit('createNewUser', {newUsername});
-  if (newUsername === '') {
+  socket.emit('Create New User', {new_user});
+  if (new_user === '') {
     alert ("Please enter a username")
   }
+}
+window.location.href = `api/users/${new_user}`;
+
+
+newUserBtn.addEventListener('click', newUserFunction);
