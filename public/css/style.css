@@ -41,11 +41,12 @@ header, .project:not(:last-child) {
   }
   
   body {
-    background-image: url(https://images.unsplash.com/photo-1559141866-744efe90686b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+    /* background-image: url(https://images.unsplash.com/photo-1559141866-744efe90686b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80); */
     font-family: 'Roboto', sans-serif;
+    font: var(--light-color);
     font-size: 16px;
-    /*background: var(--light-color);*/
-    margin: 4px;
+    background: hsl(0, 0%, 21%);
+    /* margin: 4px; */
   }
   
   ul {
@@ -254,4 +255,15 @@ header, .project:not(:last-child) {
   font-size: 19px;
   padding: 0%
   
+}
+/* game room styles */
+.game-room-header {
+  background: hsl(0, 0%, 21%);
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
