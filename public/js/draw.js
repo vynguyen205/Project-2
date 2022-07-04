@@ -5,11 +5,19 @@ const ctx = canvas.getContext('2d');
 const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
 
-//canvas.width = window.innerWidth - canvasOffsetX;
-//canvas.height = window.innerHeight - canvasOffsetY;
+// canvas.width = window.innerWidth - canvasOffsetX;
+// canvas.height = window.innerHeight - canvasOffsetY;
 
-canvas.width = 300;
-canvas.height = 300;
+canvas.width = 500;
+canvas.height = 500;
+
+//style of board
+const drawingBoardDesign = () => {
+    canvas.style = `
+    border-radius: 20px;
+    background-color: #fff;
+    `;
+}
 
 
 let isPainting = false;
@@ -56,4 +64,5 @@ canvas.addEventListener('mouseup', e => {
 });
 
 canvas.addEventListener('mousemove', draw);  
+drawingBoardDesign();
 
