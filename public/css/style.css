@@ -266,4 +266,36 @@ header, .project:not(:last-child) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .container {
+    height: 100%;
+    display: flex;
+}
+
+#toolbar {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 70px;
+    background-color: #202020;
+}
+
+#toolbar * {
+    margin-bottom: 6px;
+}
+
+#toolbar label {
+    font-size: 12px;
+}
+
+#toolbar input {
+    width: 100%;
+}
+
+#toolbar button {
+    background-color: #1565c0;
+    border: none;
+    border-radius: 4px;
+    color:white;
+    padding: 2px;
 }

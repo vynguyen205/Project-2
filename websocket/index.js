@@ -1,7 +1,7 @@
 const socket = require('socket.io');
 const chalk = require('chalk');
 const { promisify } = require('util');
-const { User } = require('../models');
+const { User, Room } = require('../models');
 
 const users = [];
 
@@ -18,10 +18,10 @@ const createWSEvents = async io => {
                 //     socket_id: socket.id,
                 // }
                 //check to see if someone already made a room with the same id
-                if(room_name === room_name) {
+                if(room_name === Room.findOne({where: {room_name}})) {
                     console.log(chalk.red("Room already exists"));
                     socket.emit("Room Exists: ", room_name);
-                }            //if not, create a new room
+                } 
                 else {
                     console.log(chalk.yellow("Creating Room: ", room_name));
                 }
