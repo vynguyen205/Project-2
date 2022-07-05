@@ -49,6 +49,7 @@ router.get('/:room_id', async (req, res) => {
 });
 
 // Create user from inside of a room
+
 router.post('/', async (req, res) => {
   try{
     // const roomData = await Room.findOne({
