@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-/* start of chat box styling */
 :root {
   --dark-color-a: #667aff;
   --dark-color-b: #7386ff;
@@ -11,7 +10,16 @@
    box-sizing: border-box;
    margin: 0;
    padding: 0;
- }
+}
+/* home page modal styling */
+
+.modal-wrap {
+  position: fixed;
+  width: 650px;
+  top: 30%;
+}
+
+/* start of chat box styling */
 header, .project:not(:last-child) {
     border-bottom: 1px solid #ccc;
   }
@@ -252,6 +260,10 @@ header, .project:not(:last-child) {
   font-size: 28px;
 }
 
+main > p {
+  margin-bottom: 45px;
+}
+
 .aboutCont {
   margin: 74;
   text-align: center;
@@ -336,3 +348,4 @@ header, .project:not(:last-child) {
   color:white;
   padding: 2px;
 }
+

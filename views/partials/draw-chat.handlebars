@@ -1,0 +1,51 @@
+<div class="flex-container">
+    <div class="player-container">
+          {{!-- <header class="chat-header">
+            <h1><i class="fas fa-smile"></i>Guess Here</h1>
+            <a id="leave-btn" class="leave-btn">Leave Room</a>
+          </header> --}}
+        <div class="chat-sidebar">
+          <h3><i class="fas fa-users"></i> Curent Players</h3>
+          <ul id="players"></ul>
+        </div>
+      </div>
+    {{!-- drawing board insert --}}
+     <section class="drawing-container">
+        <div class="drawing-board">
+            <canvas id="drawing-board"></canvas>
+        </div>
+        <div id="toolbar">
+            <h1>{{Draw}}</h1>
+            <div class="canvas-tools">
+              <div class="tool-align">
+                <label for="stroke">Stroke</label>
+                <input id="stroke" name="'stroke" type="color">
+              </div>
+              <div class="tool-align">
+                <label for="lineWidth">Line Width</label>
+                <input id="lineWidth" name="lineWidth" type="number" value="5">
+              </div>
+              <div class="tool-align">
+                <button id="clear">Clear</button>
+              </div>
+        </div>
+    </section>
+
+    <div class="chat-container">
+      <main class="chat-main">
+        <div class="chat-messages"></div>
+      </main>
+      <div class="chat-form-container">
+        <form id="chat-form">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Guess Here ..."
+            required
+            autocomplete="off"
+          />
+          <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
+      </div>
+
+  </div>
