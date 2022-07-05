@@ -41,7 +41,7 @@ COMPLETE IMPORTANT FIRST, THEN WORK ON DESIGNING LATER
     - could make it a chat box
      - when guessed correctly, word is green
 
-6. API fetch request !!! ✔️
+6. API fetch request !!! 
 
 
 
