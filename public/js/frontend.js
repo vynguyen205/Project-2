@@ -14,11 +14,6 @@ const joinRoomPass = document.querySelector('#join-room-password');
 let users = [];
 
 const socket = io();
-socket.on ('connection', () => {
-  console.log('⛓ Connected to server');
-  //this creates a user
-});
-socket.emit('💃🏻 Join Server', socket.id);
 
 const createRoom = async () => {
   const user_name = createUser.value.trim();
