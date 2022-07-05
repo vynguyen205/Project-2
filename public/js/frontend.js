@@ -10,6 +10,7 @@ const joinRoomBtn = document.querySelector('#join-room-btn');
 const joinRoomName = document.querySelector('#join-room-name');
 const joinRoomPass = document.querySelector('#join-room-password');
 
+
 //adds a new user to the server
 let users = [];
 
@@ -79,15 +80,17 @@ joinRoomBtn.addEventListener('click', joinRoomFunction);
 
   // Create new user 
 const newUserFunction = async () => {
-  const new_user = createNewUser.value.trim();
+  const new_user = createUser.value.trim();
 
-  const fetchData = await fetch(`/api/rooms/`, { 
+  const fetchData = await fetch(`/api/users/`, { 
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      newUser: users,
+      username: new_user,
+      socket_id: new_user.socket_id,
+      room_id: new_user.room_id
     })
   })
   console.log(fetchData)
@@ -100,4 +103,4 @@ const newUserFunction = async () => {
   }
 }
 
-newUserBtn.addEventListener('click', newUserFunction);
+createRoomBtn.addEventListener('click', newUserFunction);
