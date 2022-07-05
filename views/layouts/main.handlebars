@@ -10,29 +10,32 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Düdl</title>
     
   </head>
   <body>
     {{! this is the main html file wrapper for all your views }}
   <div class="level-left">
-    <h1 class="title" style="font-size: 52px;">DÜDL</h1>
+    <h1 class="title" style="font-size: 30px; color:rgb(245, 245, 245)">DÜDL</h1>
   </div>
     {{! placeholder for where the view will be injected }}
     {{{body}}}
 
-    <footer class="footer" style="padding: 10px; border: 10px;">
+    {{!-- <footer class="footer" style="padding: 10px; border: 10px;">
   <div class="content has-text-centered">
     <p>
       <strong> Made with ❤️ by The Coding Addicts </a></strong>
     </p>
   </div>
-</footer>
+</footer> --}}
     {{! placeholder for where the view will be injected }}
   </body>
   <script src='/js/fetch.js'></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src='/js/frontend.js'></script>
+  <script src='/js/modal.js'></script>
+  <script src="/js/draw.js"></script>
+  <script src="/js/gameroom.js"></script>
  
 </html>

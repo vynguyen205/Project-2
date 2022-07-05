@@ -1,4 +1,6 @@
 //DOM ELEMENTS
+// create user
+const createUser = document.getElementById('create-username');
 //create room DOM elements
 const createRoomBtn = document.querySelector('#create-room-btn');
 const createRoomName = document.querySelector('#create-room-name');
@@ -13,14 +15,10 @@ let users = [];
 
 // Confirm that user is connected to the server
 const socket = io();
-socket.on ('connection', () => {
-  console.log('⛓ Connected to server');
-  //this creates a user
-});
-socket.emit('💃🏻 Join Server', socket.id);
 
 // get data from server to create a new room 
 const createRoom = async () => {
+  const user_name = createUser.value.trim();
   const room_name = createRoomName.value.trim();
   const roomPassword = createRoomPassword.value.trim();
 
