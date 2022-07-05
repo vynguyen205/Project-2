@@ -285,12 +285,12 @@ main > p {
   height: 100%;
   display: flex;
 }
-/* .drawing-board {
+ /* .drawing-board {
   display: flex;
   width: fit-content;
   position: relative;
   border: 1px solid #202020;
-  background-color: white;
+  background-color: white;  
   border-radius: 15px;
 } */
 
