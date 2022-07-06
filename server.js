@@ -3,6 +3,7 @@ const express = require('express');
 const chalk = require('chalk');
 const routes = require('./controllers');
 const http = require('http');
+const socket = require('socket.io');
 
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -13,15 +14,14 @@ const session = require('express-session');
 const sequelize = require('./config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
 const app = express();
 const server = http.createServer(app);
 //bring in socket module
-require('./websocket')(server);
+// require('./websocket')(server);
 const PORT = process.env.PORT || 3001;
 
 // Define template engine to use
-app.engine('handlebars', hbs.engine); 
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // this allows you to parse the body of the request
@@ -57,11 +57,21 @@ const messages = {
 
 // app.use(session(sess));
 
-
-
 //defined routes for the app
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  server.listen(PORT, () => console.log(chalk.greenBright(`🌎 API Server now listening on http://localhost:${PORT} 🌎`)));
+  const server = app.listen(PORT, () =>
+    console.log(
+      chalk.greenBright(
+        `🌎 API Server now listening on http://localhost:${PORT} 🌎`
+      )
+    )
+  );
+  const io = socket(server);
+  app.set('socketio', io);
+  io.sockets.on('connection', (socket) => {
+    console.log('connection');
+    socket.broadcast.emit('user connected', socket.id);
+  });
 });
