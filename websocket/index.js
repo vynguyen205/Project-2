@@ -15,13 +15,16 @@ const createWSEvents = async io => {
         io.on('connection', socket => {
             console.log(chalk.green(`Client Connected`, socket.id));
             socket.on('joinRoom', ({ user, room }) => {
-                const newUser = userJoin(username, room, socket.id )
-                socket.join(room); // needs a unique identifier for the user
+                console.log(user, room)
+                // const newUser = userJoin(username, room, socket.id )
+                socket.join(room); // needs a unique identifier for the rooom
+
+    
 
                 socket.emit('message', formatMessage(bot, `Welcome to DÜDLE!`))
 
                 //broadcast to all users that a new user has joined
-                socket.broadcast.to(room).emit('message', formatMessage(bot, `${newUser.username} has joined the chat!`));
+                socket.broadcast.emit('message', formatMessage(bot, `a new user has joined the chat!`));
             });
             //this runs when the user disconnects from the server
             socket.on("disconnect", () => {
@@ -31,9 +34,9 @@ const createWSEvents = async io => {
             //this runs when the user sends a message
             socket.on('Chat Message', async (message) => {
                 console.log(chalk.blue(`Message Received: ${message}`));
-                const newUser = await getCurrentUser(socket.id);
-                console.log(newUser)
-                // io.to(room).emit('message', formatMessage('user.username', message));
+                // const newUser = await getCurrentUser(socket.id);
+                // console.log(newUser)
+                io.emit('message', formatMessage('User', message));
             })
         });
 
