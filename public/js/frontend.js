@@ -31,6 +31,7 @@ const createRoom = async () => {
           body: JSON.stringify({
             roomName: room_name,
             password: roomPassword,
+            user_name
           })
         })
         console.log(fetchData)
@@ -44,7 +45,7 @@ const createRoom = async () => {
     alert('Please enter a room name and password'); 
   }
   //redirect to the room
-  window.location.href = `api/rooms/${room_name}`;
+  // window.location.href = `api/rooms/${room_name}`;
 
 }
 
@@ -66,41 +67,44 @@ const joinRoomFunction = async () => {
         const dataReturn = await fetchData.json();
         console.log(dataReturn);
 
-  socket.emit('Join Room', {room_name, roomPassword});
+  socket.emit('joinRoom', {room_name, roomPassword});
   //checkiing for null values
   if (room_name === '' || roomPassword === '') {
     alert('Please enter a room name and password'); 
   }
   //redirect to the room
-  window.location.href = `api/rooms/${room_name}`;
+  // window.location.href = `api/rooms/${room_name}`;
 }
 
-createRoomBtn.addEventListener('click', createRoom);
-joinRoomBtn.addEventListener('click', joinRoomFunction);
 
   // Create new user 
-const newUserFunction = async () => {
+const newUserFunction = async (e) => {
+  e.preventDefault();
   const new_user = createUser.value.trim();
+  console.log(new_user);
 
+
+  //TODO - grab socket id, send with payload
   const fetchData = await fetch(`/api/users/`, { 
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: new_user,
-      socket_id: new_user.socket_id,
-      room_id: new_user.room_id
+      username: new_user
+      //need socket id here in the body
     })
   })
   console.log(fetchData)
   const dataReturn = await fetchData.json();
   console.log(dataReturn);
 
-  socket.emit('Create New User', {users});
+  socket.emit('joinRoom', dataReturn);
   if (users === '') {
     alert ("Please enter a username")
   }
 }
 
-createRoomBtn.addEventListener('click', newUserFunction);
+// createRoomBtn.addEventListener('click', newUserFunction);
+createRoomBtn.addEventListener('click', createRoom);
+joinRoomBtn.addEventListener('click', joinRoomFunction);
