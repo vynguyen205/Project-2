@@ -1,40 +1,47 @@
 const socket = require('socket.io');
+const formatMessage = require('../logic/message');
 const chalk = require('chalk');
 const { promisify } = require('util');
-const { User } = require('../models');
+const { User, Room } = require('../models');
+const { userJoin, getCurrentUser } = require('../public/js/users');
 
 const users = [];
+const bot = 'DÜDLE bot';
 
 const createWSEvents = async io => {
     io.on = promisify(io.on);
     try {
-        //event for when a user connects
+        //this runs when the user connects to the server
         io.on('connection', socket => {
             console.log(chalk.green(`Client Connected`, socket.id));
-        
-            // socket.on("createRoom", ({room_name}, user) => {
-            //     const newUser = {
-            //         user_id: user.id,
-            //         socket_id: socket.id,
-                })
-            //     //check to see if someone already made a room with the same id
-                if(room_name === room_name) {
-                    console.log(chalk.red("Room already exists"));
-                    socket.emit("Room Exists: ", room_name);
-                }            //if not, create a new room
-                else {
-                    console.log(chalk.yellow("Creating Room: ", room_name));
-                }
-        
-            socket.on("Disconnect", () => {
-                //removing the user from the array of users connected to the server
-                users = users.filter(user => user.id !== socket.id);
-                //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
-                io.emit("New User", users);
+            socket.on('joinRoom', ({ user, room }) => {
+                console.log(user, room)
+                // const newUser = userJoin(username, room, socket.id )
+                socket.join(room); // needs a unique identifier for the rooom
+
+    
+
+                socket.emit('message', formatMessage(bot, `Welcome to DÜDLE!`))
+
+                //broadcast to all users that a new user has joined
+                socket.broadcast.emit('message', formatMessage(bot, `a new user has joined the chat!`));
             });
+            //this runs when the user disconnects from the server
+            socket.on("disconnect", () => {
+                //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
+                io.emit('message', 'A user has left the room');
+            })
+            //this runs when the user sends a message
+            socket.on('Chat Message', async (message) => {
+                console.log(chalk.blue(`Message Received: ${message}`));
+                // const newUser = await getCurrentUser(socket.id);
+                // console.log(newUser)
+                io.emit('message', formatMessage('User', message));
+            })
+        });
 
     } catch (err) {
-    console.log(chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err)));
+        console.log(chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err)));
     }
 }
 const initSocket = (server) => {
