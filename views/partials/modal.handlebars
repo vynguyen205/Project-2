@@ -1,95 +1,189 @@
-<button class="button is-success is-light" id="trigger1-btn">Join</button>
-<div class="modal" id="modal1">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="section modal-wrap">
-            <div class="field">
-                <p class="control has-icons-left has-icons-right"> 
-                    <input class="input" id="create-username" type="name" placeholder="Username">
-                    <span class="icon is-small is-left">
-                    <i class="fa-thin fa-input-text"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right"> 
-                    <input class="input" id="join-room-name" type="name" placeholder="Room Name">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-home"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" id='join-room-password' type="password" placeholder="Room Password">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <button class="button is-success" id="join-room-btn">
-                    Join
-                    </button>
-                </p>
-            </div>
-        </div>
+{{! -- Button for Join}}
+<button class='button is-success is-light' id='trigger1-btn'>Join</button>
+<div class='modal' id='modal1'>
+  <div class='modal-background'></div>
+  <div class='modal-content'>
+    <div class='section modal-wrap'>
+      <div class='field'>
+        <p class='control has-icons-left has-icons-right'>
+          <input
+            class='input'
+            id='join-username'
+            type='name'
+            placeholder='Username'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fa-thin fa-input-text'></i>
+          </span>
+          <span class='icon is-small is-right'>
+            <i class='fas fa-check'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control has-icons-left has-icons-right'>
+          <input
+            class='input'
+            id='join-room-name'
+            type='name'
+            placeholder='Room Name'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fas fa-home'></i>
+          </span>
+          <span class='icon is-small is-right'>
+            <i class='fas fa-check'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control has-icons-left'>
+          <input
+            class='input'
+            id='join-room-password'
+            type='password'
+            placeholder='Room Password'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fas fa-lock'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control'>
+          <button class='button is-success' id='join-room-btn'>
+            Join
+          </button>
+        </p>
+      </div>
     </div>
+  </div>
 
-    <button class="modal-close is-large" aria-label="close" onclick="document.getElementById('modal1').style.display='none'"></button>
-    
+  <button
+    class='modal-close is-large'
+    aria-label='close'
+    onclick="document.getElementById('modal1').style.display='none'"
+  ></button>
+
+</div>
+{{! -- Button for Create}}
+<button class='button is-success is-light' id='trigger2-btn'>Create</button>
+<div class='modal' id='modal2'>
+  <div class='modal-background'></div>
+  <div class='modal-content'>
+    <div class='section modal-wrap'>
+      <div class='field'>
+        <p class='control has-icons-left has-icons-right'>
+          <input
+            class='input'
+            id='create-username'
+            type='name'
+            placeholder='Username'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fas-fa-input-text'></i>
+          </span>
+          <span class='icon is-small is-right'>
+            <i class='fas fa-check'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control has-icons-left has-icons-right'>
+          <input
+            class='input'
+            id='create-room-name'
+            type='name'
+            placeholder='Room Name'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fas fa-home'></i>
+          </span>
+          <span class='icon is-small is-right'>
+            <i class='fas fa-check'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control has-icons-left'>
+          <input
+            class='input'
+            id='create-room-password'
+            type='password'
+            placeholder='Room Password'
+          />
+          <span class='icon is-small is-left'>
+            <i class='fas fa-lock'></i>
+          </span>
+        </p>
+      </div>
+      <div class='field'>
+        <p class='control'>
+          <button class='button is-success' id='create-room-btn'>
+            Create
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+  <button
+    class='modal-close is-large'
+    aria-label='close'
+    aria-label='close'
+    onclick="document.getElementById('modal2').style.display='none'"
+  ></button>
 </div>
 
-<button class="button is-success is-light" id="trigger2-btn">Create</button>
-<div class="modal" id="modal2">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="section modal-wrap">
-            <div class="field">
-                <p class="control has-icons-left has-icons-right"> 
-                    <input class="input" id="create-username" type="name" placeholder="Username">
-                    <span class="icon is-small is-left">
-                    <i class="fas-fa-input-text"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right"> 
-                    <input class="input" id="create-room-name" type="name" placeholder="Room Name">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-home"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" id='create-room-password' type="password" placeholder="Room Password">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <button class="button is-success" id="create-room-btn">
-                    Create
-                    </button>
-                </p>
-            </div>
-        </div>
+{{!-------------------------------------------------------------------------------------------------------------------------------------------------}}
+
+{{! -- Button for About}}
+<button class='button is-success is-light' id='trigger3-btn'>About</button>
+<div class='modal' id='modal3'>
+  <div class='modal-background'></div>
+  <div class='modal-content'>
+    <div class='section modal-wrap'>
+      <div class='field'>
+        <p class='aboutP'>
+          <b>DÜDL</b>
+          is a multiplayer drawing and guessing game. One game consists of
+          rounds where players take turns drawing a word while the other players
+          try and guess it to gain points. At the end of each round, the player
+          with the most points wins!!
+        </p>
+      </div>
     </div>
-    <button class="modal-close is-large" aria-label="close" aria-label="close" onclick="document.getElementById('modal2').style.display='none'"></button>
+  </div>
+  <button
+    class='modal-close is-large'
+    aria-label='close'
+    aria-label='close'
+    onclick="document.getElementById('modal3').style.display='none'"
+  ></button>
+</div>
+{{! -- Button for How To}}
+<button
+  class='button is-success is-light'
+  id='trigger4-btn'
+>Instructions</button>
+<div class='modal' id='modal4'>
+  <div class='modal-background'></div>
+  <div class='modal-content'>
+    <div class='section modal-wrap'>
+      <div class='field'>
+        <p class='howtoP'>
+          If it's your turn as the
+          <b>DÜDLER</b>, you will choose a word and then have 90 seconds to draw
+          that word. Or, if you're guessing, type your guess in the chat to gain
+          points. Oh and think fast, because the quicker you answer the more
+          points you will get!!
+        </p>
+      </div>
+    </div>
+  </div>
+  <button
+    class='modal-close is-large'
+    aria-label='close'
+    aria-label='close'
+    onclick="document.getElementById('modal4').style.display='none'"
+  ></button>
 </div>
