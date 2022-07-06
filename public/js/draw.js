@@ -13,7 +13,7 @@ canvas.height = 500;
 
 //style of board
 const drawingBoardDesign = () => {
-      canvas.style = `
+    canvas.style = `
         background-color: #fff;
         border-radius: 20px;
       `;
@@ -27,27 +27,26 @@ let startY;
 
 toolbar.addEventListener('click', e => {
     if (e.target.id === 'clear') {
-        ctx.clearRect(0,0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 });
 
 toolbar.addEventListener('change', e => {
-    if(e.target.id === 'stroke') {
+    if (e.target.id === 'stroke') {
         ctx.strokeStyle = e.target.value;
     }
-    if(e.target.id === 'lineWidth'){
+    if (e.target.id === 'lineWidth') {
         lineWidth = e.target.value;
     }
 });
 
 const draw = (e) => {
-    if(!isPainting){
+    if (!isPainting) {
         return;
     }
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
-
-    ctx.lineTo(e.clientX - canvasOffsetX, e.clientY);
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     ctx.stroke();
 }
 
@@ -63,6 +62,6 @@ canvas.addEventListener('mouseup', e => {
     ctx.beginPath();
 });
 
-canvas.addEventListener('mousemove', draw);  
+canvas.addEventListener('mousemove', draw);
 drawingBoardDesign();
 
