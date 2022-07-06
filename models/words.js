@@ -19,9 +19,6 @@ Word.init({
         allowNull: false,
     }
 }, 
-// {
-//     hooks:{}
-// },
 {
     sequelize,
     modelName: 'word',

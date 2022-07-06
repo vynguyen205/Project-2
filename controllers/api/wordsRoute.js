@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   console.log('wordsData', wordsData);
   return res.json(wordsData);
 });
-
+//CREATE word
 router.post('/', async (req, res) => {
   const wordsData = await Words.create(req.params.words);
   return res.json(wordsData);
@@ -25,11 +25,6 @@ router.get('/:word', async (req, res) => {
 
 router.get('/:points', async (req, res) => {
   const wordsData = await Words.findByPk(req.params.points);
-  return res.json(wordsData);
-});
-
-router.post('/', async (req, res) => {
-  const wordsData = await Words.create(req.body);
   return res.json(wordsData);
 });
 

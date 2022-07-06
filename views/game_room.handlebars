@@ -1,0 +1,22 @@
+<div class="game-room-header">
+  <h1> GET READY TO DUDLE </h1>
+  <div>
+      <h3><i class="fas fa-comments"></i> Room Name: {{roomName}}</h3>
+      <h2 id="room-name"></h2>
+      {{!-- <h3> DUDLE SCORES {{highscore}}</h3> --}}
+      {{!-- <p>
+          CONCENTRATE ON THE DUDLE 
+      </p> --}}
+      <p>
+          Word - {{word}}
+      </p>
+  </div>
+</div>
+
+{{!-- inject drawing board and chat box here --}}
+{{> draw-chat }}
+
+{{! <script>
+    var gameRm = document.getElementById('gameRm');
+    gameRm.innerHTML = window.location.pathname.split('/')[2];
+</script> }}
