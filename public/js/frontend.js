@@ -14,7 +14,6 @@ const joinRoomPass = document.querySelector('#join-room-password');
 let users = [];
 
 // Confirm that user is connected to the server
-const socket = io();
 
 // get data from server to create a new room
 const createRoom = async () => {
@@ -22,6 +21,7 @@ const createRoom = async () => {
   const room_name = createRoomName.value.trim();
   const roomPassword = createRoomPassword.value.trim();
   try {
+    //go to his url create a room and new user
     const fetchData = await fetch(`api/rooms/`, {
       method: 'POST',
       headers: {
@@ -38,7 +38,6 @@ const createRoom = async () => {
     const dataReturn = await fetchData.json();
     console.log(dataReturn);
 
-    socket.emit('createRoom', { room_name, roomPassword });
     //checkiing for null values
     if (room_name === '' || roomPassword === '') {
       alert('Please enter a room name and password');
@@ -78,34 +77,35 @@ const joinRoomFunction = async () => {
 };
 
 // Create new user
-const newUserFunction = async (e) => {
-  e.preventDefault();
-  const new_user = createUser.value.trim();
-  console.log(new_user);
+// const newUserFunction = async (e) => {
+//   e.preventDefault();
+//   // const new_user = createUser.value.trim();
+//   console.log(new_user);
 
-  //TODO - grab socket id, send with payload
-  const fetchData = await fetch(`/api/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username: new_user,
-      //need socket id here in the body
-    }),
-  });
-  console.log(fetchData);
-  const dataReturn = await fetchData.json();
-  console.log(dataReturn);
+//   //TODO - grab socket id, send with payload
+//   const fetchData = await fetch(`/api/users/`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       username: new_user,
+//       //need socket id here in the body
+//     }),
+//   });
+//   console.log(fetchData);
+//   const dataReturn = await fetchData.json();
+//   console.log(dataReturn);
 
-  socket.emit();
+//   socket.emit();
 
-  socket.emit('joinRoom', dataReturn);
-  if (users === '') {
-    alert('Please enter a username');
-  }
-};
+//   socket.emit('joinRoom', dataReturn);
+//   if (users === '') {
+//     alert('Please enter a username');
+//   }
+// };
 
 // createRoomBtn.addEventListener('click', newUserFunction);
 createRoomBtn.addEventListener('click', createRoom);
+
 joinRoomBtn.addEventListener('click', joinRoomFunction);

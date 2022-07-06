@@ -1,6 +1,6 @@
 const User = require('../models/users');
 const socket = require('socket.io');
-const initSocket = require('../websocket/index');
+// const initSocket = require('../websocket/index');
 
 // const userSocket = async (io) => {
 //   io.on = promisify(io.on);
@@ -18,18 +18,18 @@ const initSocket = require('../websocket/index');
 // console.log(`!!!!!!!!!!!`, userSocket);
 
 // join user to chat
-const userJoin = async (userid, room_name) => {
-  const user = await User.create({
-    username: userid,
-    room_id: room_name,
-    // socket_id:
-  });
-  return user;
-};
+// const userJoin = async (user_name, room_id) => {
+//   const user = await User.create({
+//     username: user_name,
+//     room_id,
+//     // socket_id:
+//   });
+//   return user;
+// };
 
 //get current user
-const getCurrentUser = (id) => {
-  return User.findOne({ where: { socket_id: id } });
-};
+// const getCurrentUser = (id) => {
+//   return User.findOne({ where: { socket_id: id } });
+// };
 
 module.exports = { userJoin, getCurrentUser };

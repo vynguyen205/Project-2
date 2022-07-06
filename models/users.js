@@ -11,10 +11,6 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // socket_id: {
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,14 +37,6 @@ User.init(
       allowNull: true,
     },
   },
-  // {
-  //     hooks: {
-  //         beforeCreate(user) {
-  //             //setting the username to be socket_id if it's not set yet
-  //             username = user.socket_id.split('_')[0];
-  //         },
-  //     }
-  // },
   {
     sequelize,
     timestamps: false,

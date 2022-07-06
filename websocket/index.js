@@ -48,9 +48,9 @@ const createWSEvents = async (io) => {
     );
   }
 };
-const initSocket = (server) => {
-  const io = socket(server);
-  createWSEvents(io);
-};
+// const initSocket = (server) => {
+//   const io = socket(server);
+//   createWSEvents(io);
+// };
 
-module.exports = initSocket;
+module.exports = createWSEvents;

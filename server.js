@@ -12,6 +12,7 @@ const path = require('path');
 const session = require('express-session');
 
 const sequelize = require('./config/connection');
+const { quiet } = require('nodemon/lib/utils');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -68,10 +69,11 @@ sequelize.sync({ force: false }).then(() => {
       )
     )
   );
+  //having the server connect to the socket as soon as the server is running
   const io = socket(server);
   app.set('socketio', io);
   io.sockets.on('connection', (socket) => {
-    console.log('connection');
-    socket.broadcast.emit('user connected', socket.id);
+    console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
+    socket.broadcast.emit(chalk.yellow('User Connected: ', socket.id));
   });
 });

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Room, User } = require('../../models');
 const Word = require('../../models/words');
-const { userJoin } = require('../../logic/user');
+const randomAvatar = require('../../logic/randomAvatars');
 
 //get all rooms
 router.get('/', async (req, res) => {
@@ -34,29 +34,31 @@ router.get(`/:roomName`, async (req, res) => {
 //joining a room
 // router.post('/', async (req, res) => {
 
-//create room
+//create room and create user
 router.post(`/`, async (req, res) => {
   console.log(req.body);
   const { user_name, ...roomData } = req.body;
   try {
     //creat e room in db
-    //no need to meit messages
     const createRoom = await Room.create(roomData);
-    //   room_name: req.body.room_name,
-    //   password: req.body.password,
-    // },
-    // {
-    //   include: [{model: User}],
-    //   attribute: ['room_name', 'password']
-    // })
     //create user in db
-    const createdUser = await userJoin();
-    res.status(200).json(createRoom, createdUser);
+    const createdUser = await User.create({
+      username: user_name,
+      room_id: createRoom.id,
+      avatar: randomAvatar(),
+    });
+
+    if (res.json(createdUser) || res.json(createRoom)) {
+      res.status(200);
+    }
+
+    console.log('!!!!!', createdUser);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
 
 //DELETE room
 router.delete('/:roomid', async (req, res) => {
