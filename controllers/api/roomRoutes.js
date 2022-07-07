@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//get one room
+//get room by roomName
 router.get(`/:roomName`, async (req, res) => {
   try {
     const roomData = await Room.findOne(req.params.id, {});
@@ -31,26 +31,42 @@ router.get(`/:roomName`, async (req, res) => {
   }
 });
 
-//joining a room
-// router.post('/', async (req, res) => {
+//update room
+router.put(`/:roomName`, async (req, res) => {
+  console.log(req.body);
+  const { user_name, ...roomData } = req.body;
+  try {
+    const joinRoom = await Room.update(req.body);
+    //maybe we lookup record from db using roomid
+    console.log(`🧸 User is in game room`);
+
+    const createreJoinedUser = await User.create({
+      username: user_name,
+      room_id: joinRoom.id,
+      socket_id: req.body.socket_id,
+      avatar: randomAvatar(),
+    });
+
+    console.log(`JOINED USER CREATED:`, createreJoinedUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //create room and create user
 router.post(`/`, async (req, res) => {
   console.log(req.body);
   const { user_name, ...roomData } = req.body;
   try {
-    //creat e room in db
+    //create room in db
     const createRoom = await Room.create(roomData);
     //create user in db
     const createdUser = await User.create({
       username: user_name,
       room_id: createRoom.id,
+      socket_id: req.body.socket_id,
       avatar: randomAvatar(),
     });
-
-    if (res.json(createdUser) || res.json(createRoom)) {
-      res.status(200);
-    }
 
     console.log('!!!!!', createdUser);
   } catch (err) {
@@ -59,6 +75,14 @@ router.post(`/`, async (req, res) => {
   }
 });
 
+// router.put('/roomName', async (req, res) => {
+//   console.log(req.body);
+//   const { user_name, ...roomData } = req.body;
+//   try {
+//     let updateRoom = await Room.findOne(req.body);
+
+//   } catch (err) {}
+// });
 
 //DELETE room
 router.delete('/:roomid', async (req, res) => {

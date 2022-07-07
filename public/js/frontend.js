@@ -1,6 +1,7 @@
-//DOM ELEMENTS
+//DOM ELEMENts
 // create user
 const createUser = document.getElementById('create-username');
+const joinUsername = document.getElementById('join-username');
 //create room DOM elements
 const createRoomBtn = document.querySelector('#create-room-btn');
 const createRoomName = document.querySelector('#create-room-name');
@@ -30,6 +31,7 @@ const createRoom = async () => {
       body: JSON.stringify({
         roomName: room_name,
         password: roomPassword,
+        socket_id: socket.id,
         user_name,
       }),
     });
@@ -42,70 +44,50 @@ const createRoom = async () => {
     if (room_name === '' || roomPassword === '') {
       alert('Please enter a room name and password');
     }
+    //redirect to the room
+    window.location.href = `api/rooms/${room_name}`;
+
+    socket.emit('message');
   } catch (err) {
     console.log(err);
   }
-  //redirect to the room
-  // window.location.href = `api/rooms/${room_name}`;
 };
 
 const joinRoomFunction = async () => {
-  const room_name = joinRoomName.value.trim();
+  const join_username = joinUsername.value.trim();
+  const room_name = joinRoomName.value;
   const roomPassword = joinRoomPass.value.trim();
 
-  const fetchData = await fetch(`api/rooms/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      roomName: room_name,
-      password: roomPassword,
-    }),
-  });
-  console.log(fetchData);
-  const dataReturn = await fetchData.json();
-  console.log(dataReturn);
+  try {
+    const fetchData = await fetch(`api/rooms/${room_name}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        roomName: room_name,
+        password: roomPassword,
+        socket_id: socket.id,
+        join_username,
+      }),
+    });
 
-  socket.emit('joinRoom', { room_name, roomPassword });
-  //checkiing for null values
-  if (room_name === '' || roomPassword === '') {
-    alert('Please enter a room name and password');
+    console.log(fetchData);
+    const dataReturn = await fetchData.json();
+    console.log(dataReturn);
+
+    socket.emit('joinRoom', { room_name, join_username });
+    //checkiing for null values
+    if (room_name === '' || roomPassword === '') {
+      alert('Please enter a room name and password');
+    }
+    //redirect to the room
+    window.location.href = `api/rooms/${room_name}`;
+  } catch (err) {
+    console.log(err);
   }
-  //redirect to the room
-  // window.location.href = `api/rooms/${room_name}`;
 };
 
-// Create new user
-// const newUserFunction = async (e) => {
-//   e.preventDefault();
-//   // const new_user = createUser.value.trim();
-//   console.log(new_user);
+createRoomBtn?.addEventListener('click', createRoom);
 
-//   //TODO - grab socket id, send with payload
-//   const fetchData = await fetch(`/api/users/`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       username: new_user,
-//       //need socket id here in the body
-//     }),
-//   });
-//   console.log(fetchData);
-//   const dataReturn = await fetchData.json();
-//   console.log(dataReturn);
-
-//   socket.emit();
-
-//   socket.emit('joinRoom', dataReturn);
-//   if (users === '') {
-//     alert('Please enter a username');
-//   }
-// };
-
-// createRoomBtn.addEventListener('click', newUserFunction);
-createRoomBtn.addEventListener('click', createRoom);
-
-joinRoomBtn.addEventListener('click', joinRoomFunction);
+joinRoomBtn?.addEventListener('click', joinRoomFunction);

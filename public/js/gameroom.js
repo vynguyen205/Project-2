@@ -1,7 +1,15 @@
-//DOM ELEMENTS
+//DOM ELEMENT
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
+//when a user is connected a console log is displaying the user's id.
 
+const socket = io();
+socket.io.connect(window.location.hostname);
+// socket.on('New User Connected:', (id) =>
+//   console.log('New User Connected: ', id)
+// );
+
+//message from server
 socket.on('message', (message) => {
   outputMessage(message);
   console.log(message);
@@ -10,7 +18,7 @@ socket.on('message', (message) => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
-socket.emit('💃🏻 Join Server', socket.id);
+// socket.emit('💃🏻 Join Server', socket.id);
 
 //message event
 chatForm?.addEventListener('submit', (e) => {
@@ -32,5 +40,5 @@ const outputMessage = (message) => {
   div.classList.add('message');
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">${message.text}</p>`;
-  document.querySelector('.chat-messages').appendChild(div);
+  document?.querySelector('.chat-messages').appendChild(div);
 };

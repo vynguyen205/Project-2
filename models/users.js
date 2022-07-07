@@ -11,6 +11,9 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    socket_id: {
+      type: DataTypes.STRING,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,

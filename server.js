@@ -18,7 +18,7 @@ const { quiet } = require('nodemon/lib/utils');
 const app = express();
 const server = http.createServer(app);
 //bring in socket module
-// require('./websocket')(server);
+require('./websocket')(server);
 const PORT = process.env.PORT || 3001;
 
 // Define template engine to use
@@ -33,14 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //blank users object to store all the users connected to the server
-let users = [];
-//past messages that were stored in the database
-const messages = {
-  general: [],
-  random: [],
-  jokes: [],
-  javascript: [],
-};
+let users = []
 
 //settinng up event for when user connects
 //session config
@@ -62,7 +55,7 @@ const messages = {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  const server = app.listen(PORT, () =>
+  server.listen(PORT, () =>
     console.log(
       chalk.greenBright(
         `🌎 API Server now listening on http://localhost:${PORT} 🌎`
@@ -70,10 +63,10 @@ sequelize.sync({ force: false }).then(() => {
     )
   );
   //having the server connect to the socket as soon as the server is running
-  const io = socket(server);
-  app.set('socketio', io);
-  io.sockets.on('connection', (socket) => {
-    console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
-    socket.broadcast.emit(chalk.yellow('User Connected: ', socket.id));
-  });
+  // const io = socket(server);
+  // app.set('socketio', io);
+  // io.sockets.on('connection', (socket) => {
+  //   console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
+  //   socket.broadcast.emit('New User Connected: ', socket.id);
+  // });
 });

@@ -23,10 +23,10 @@ router.get('/:id', async (req, res) => {
   return res.json(userData);
 });
 
-// router.get('/:socket_id', async (req, res) => {
-//   const userData = await User.findByPk(req.params.socket_id);
-//   return res.json(userData);
-// });
+router.get('/:socket_id', async (req, res) => {
+  const userData = await User.findByPk(req.params.socket_id);
+  return res.json(userData);
+});
 
 router.get('/:username', async (req, res) => {
   const userData = await User.findByPk(req.params.username);
