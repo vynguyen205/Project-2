@@ -36,11 +36,14 @@ const createWSEvents = async (io) => {
 
       //this runs when the user sends a message
       socket.on('Chat Message', async (message) => {
-        console.log(chalk.blue(`Message Received: ${message}`));
+        console.log(chalk.blue(`Message Received: ${message.txt}`));
+        const user = await User.finaAll({ where: { socket_id: socket.id } });
+
+        console.log (`!!!!!!!` , user);
 
         socket.broadcast.emit(
           'message',
-          formatMessage((users[socket.id] = message.username), message)
+          formatMessage(message.username, message.txt)
         );
       });
       //this runs when the user disconnects from the server

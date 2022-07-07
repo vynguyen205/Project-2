@@ -11,8 +11,9 @@ socket.io.connect(window.location.hostname);
 
 //message from server
 socket.on('message', (message) => {
-  outputMessage(message);
   console.log(message);
+
+  outputMessage(message);
 
   //scroll to the bottom of the chat
   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -24,7 +25,10 @@ socket.on('message', (message) => {
 chatForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   //grabbing typed message from the input in html
-  const message = e.target.elements.msg.value;
+  const message = {
+    txt: e.target.elements.msg.value,
+    username: createUser.value.trim(),
+  }
   console.log(message);
 
   socket.emit('Chat Message', message);
@@ -40,5 +44,9 @@ const outputMessage = (message) => {
   div.classList.add('message');
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">${message.text}</p>`;
+    // console.log(div)
   document?.querySelector('.chat-messages').appendChild(div);
+
 };
+
+
