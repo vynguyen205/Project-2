@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Room, User } = require('../../models');
 const Word = require('../../models/words');
-const {userJoin} = require("../../logic/user");
+const { userJoin } = require('../../logic/user');
 
 //get all rooms
 router.get('/', async (req, res) => {
@@ -30,22 +30,27 @@ router.get(`/:roomName`, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 //create room
 router.post(`/`, async (req, res) => {
-  console.log(req.body);
-  const {user_name, ...roomData} = req.body;
   try {
-    //creat e room in db
-    const createRoom = await Room.create(roomData);
-    //   room_name: req.body.room_name,
-    //   password: req.body.password,
-    // },
-    // {
-    //   include: [{model: User}],
-    //   attribute: ['room_name', 'password']
-    // })
+    const createRoom = await Room.create(req.body);
+    //   {
+    //     room_name: req.body.room_name,
+    //     password: req.body.roomPassword,
+    //   },
+    //   {
+    //     include: [{ model: User }],
+    //     attribute: ['room_name', 'password'],
+    //   }
+    // );
+    res.status(200).json(createRoom);
+
+    req.session.save(() => {
+      req.session.roomSave = true;
+    });
     //create user in db
-    const createdUser = await userJoin()
+    const createdUser = await userJoin();
     res.status(200).json(createRoom);
   } catch (err) {
     res.status(500).json(err);

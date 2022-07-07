@@ -13,7 +13,6 @@ const session = require('express-session');
 const sequelize = require('./config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
 const app = express();
 const server = http.createServer(app);
 //bring in socket module
@@ -21,7 +20,7 @@ require('./websocket')(server);
 const PORT = process.env.PORT || 3001;
 
 // Define template engine to use
-app.engine('handlebars', hbs.engine); 
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // this allows you to parse the body of the request
@@ -43,25 +42,30 @@ const messages = {
 
 //settinng up event for when user connects
 //session config
-// const sess = {
-//     secret: 'Super secret secret',
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24, // 2 weeks (just an example, you can decide how long to keep session alive)
-//   },
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-// };
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24,
+    //2 weeks (just an example, you can decide how long to keep session alive)
+  },
+  resave: false,
+  saveUninitialized: true,
+  // store: new SequelizeStore({
+  //   db: sequelize,
+  // }),
+};
 
-// app.use(session(sess));
-
-
+app.use(session(sess));
 
 //defined routes for the app
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  server.listen(PORT, () => console.log(chalk.greenBright(`🌎 API Server now listening on http://localhost:${PORT} 🌎`)));
+  server.listen(PORT, () =>
+    console.log(
+      chalk.greenBright(
+        `🌎 API Server now listening on http://localhost:${PORT} 🌎`
+      )
+    )
+  );
 });

@@ -1,4 +1,4 @@
-const {Room, Word, User} = require('../models');
+const { Room, Word, User } = require('../models');
 const chalk = require('chalk');
 //These are all the view routes for your application
 const router = require('express').Router();
@@ -8,7 +8,5 @@ router.get('/', (req, res) => {
   console.log(chalk.yellow(`🧸 User is on home page`));
   res.render('home');
 });
-
-
 
 module.exports = router;
