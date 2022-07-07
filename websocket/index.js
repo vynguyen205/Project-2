@@ -39,12 +39,21 @@ const createWSEvents = async (io) => {
 
       //this runs when the user sends a message
       socket.on('Chat Message', async (message) => {
-        console.log(chalk.blue(`Message Received: ${message}`));
-        const user = await User.findOne({ where: { username: username } });
+        // console.log(chalk.blue(`Message Received: ${message}`));
+        // const user = await User.findOne({ where: { username: username } });
 
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!`, username);
+        // console.log(`!!!!!!!!!!!!!!!!!!!!!!`, username);
 
-        socket.broadcast.emit('message', formatMessage('USER', message));
+        // socket.broadcast.emit('message', formatMessage('USER', message));
+        console.log(chalk.blue(`Message Received: ${message.txt}`));
+        const user = await User.finaAll({ where: { socket_id: socket.id } });
+
+        console.log(`!!!!!!!`, user);
+
+        socket.broadcast.emit(
+          'message',
+          formatMessage(message.username, message.txt)
+        );
       });
       //this runs when the user disconnects from the server
       socket.on('disconnect', () => {
