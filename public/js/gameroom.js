@@ -11,7 +11,6 @@ socket.io.connect(window.location.hostname);
 
 //message from server
 socket.on('message', (message) => {
-  console.log(message);
 
   outputMessage(message);
 
@@ -27,7 +26,7 @@ chatForm?.addEventListener('submit', (e) => {
   //grabbing typed message from the input in html
   const message = {
     txt: e.target.elements.msg.value,
-    username: createUser.value.trim(),
+    // username: createUser.value.trim(),
   };
   console.log(message);
 

@@ -46,7 +46,7 @@ const createWSEvents = async (io) => {
 
         // socket.broadcast.emit('message', formatMessage('USER', message));
         console.log(chalk.blue(`Message Received: ${message.txt}`));
-        const user = await User.finaAll({ where: { socket_id: socket.id } });
+        const user = await User.findAll({ where: { socket_id: socket.id } });
 
         console.log(`!!!!!!!`, user);
 
