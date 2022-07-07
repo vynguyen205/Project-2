@@ -4,11 +4,19 @@ const modal1 = document.getElementById('modal1');
 const modal2 = document.getElementById('modal2');
 // const closeModal = document.getElementsById('modal-close')[0];
 
+<<<<<<< HEAD
 trigger1.addEventListener('click', () => {
   modal1.style.display = 'block';
   console.log(`clicked`);
 });
 trigger2.addEventListener('click', () => {
+=======
+trigger1?.addEventListener('click', () => {
+  modal1.style.display = 'block';
+  console.log(`clicked`);
+});
+trigger2?.addEventListener('click', () => {
+>>>>>>> d78852a49d66c7922666735c8dd13e0c8050a26b
   modal2.style.display = 'block';
   console.log(`clicked`);
 });
@@ -22,6 +30,7 @@ trigger2.addEventListener('click', () => {
 // //         modal2.style.display = 'none';
 // //     }
 // })
+<<<<<<< HEAD
 
 //for the about and how to sections
 const trigger3 = document.getElementById('trigger3-btn');
@@ -38,3 +47,5 @@ trigger4.addEventListener('click', () => {
   console.log(`clicked`);
 });
 
+=======
+>>>>>>> d78852a49d66c7922666735c8dd13e0c8050a26b
