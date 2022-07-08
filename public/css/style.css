@@ -10,7 +10,9 @@
   --error-color: #d9534f;
 } */
 
-/* Home Page */
+/* X */
+
+/* Background */
 
 @keyframes bgcolor {
   0% {
@@ -22,15 +24,15 @@
   }
 
   60% {
-    background-color: #fde143;
+    background-color: #11a484;
   }
 
   90% {
-    background-color: rgb(255, 94, 94);
+    background-color: rgb(129, 241, 185);
   }
 
   100% {
-    background-color: #bc85f3;
+    background-color: #83c9f5;
   }
 }
 
@@ -41,93 +43,95 @@ body {
   animation-direction: alternate;
 }
 
+/* HomePage */
 
-@keyframes pulse{
-  from { transform: scale(1); }
-  50% { transform: scale(0.85); }
-  to { transform: scale(1); }
+/* TITLE */
+
+.title{
+  display: flex;
+  color:#fff;
+  margin: 30px;
+  padding-bottom: 15px;
 }
+
+/* HP BUTTONS */
 
 #trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn{
-  background-color: aquamarine;
-  border-radius: 50px;
+  min-width: 150px;
+  min-height: 30px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
   color: white;
-}
-
-#trigger1-btn:hover, #trigger2-btn:hover, #trigger3-btn:hover, #trigger4-btn:hover{
-  animation-name: pulse;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-}
-
-
-.leave-btn {
+  background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
-  padding: 5px 15px;
-  background: var(--light-color);
-  color: var(--dark-color-a);
-  border: 0;
-  font-size: 17px;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+.button.btnHome::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(150px + 12px);
+  min-height: calc(30px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
 }
 
-
-/* Join Page */
-.join-container {
-  max-width: 500px;
-  margin: 80px auto;
-  color: rgb(252, 248, 248);
+.button.btnHome:hover, .button.btnHome:focus {
+  color: white;
+  transform: translateY(-6px);
 }
 
-.join-header {
-  text-align: center;
-  padding: 20px;
-  background: var(--dark-color-a);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.button.btnHome:hover::before, .button.btnHome:focus::before {
+  opacity: 1;
 }
 
-.join-main {
-  padding: 30px 40px;
-  background: var(--dark-color-b);
+.button.btnHome::after {
+  content: '';
+  width: 15px; height: 15px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
 }
 
-.join-main p {
-  margin-bottom: 20px;
+.button.btnHome:hover::after, .button.btnHome:focus::after {
+  animation: none;
+  display: none;
 }
 
-.join-main .form-control {
-  margin-bottom: 20px;
+@keyframes ring {
+  0% {
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+  }
+  100% {
+    width: 250px;
+    height: 250px;
+    opacity: 0;
+  }
 }
 
-.join-main label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.join-main input[type='text'] {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main select {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main .btn {
-  margin-top: 20px;
-  width: 100%;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 /* home page modal styling */
 
 .modal-wrap {
@@ -136,16 +140,7 @@ body {
  top: 30%;
 }
 
-
-/* .mainCont button {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- margin-top: 20px;
-} */
-
-main {
+ main {
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -153,25 +148,53 @@ main {
 }
 
 main button {
- margin-top: 20px;
+  margin-top: 20px;
+  
+ }
  
+ main > p {
+  margin-bottom: 45px;
+ }
+
+
+/* Button Internal Content Styling */
+
+.modal-background{
+  background: rgba(41, 66, 157, 0.5);
+  backdrop-filter: blur(10px);
+  opacity: 80%;
 }
 
-main > p {
- margin-bottom: 45px;
-}
-
-.aboutCont {
- margin: 74;
- text-align: center;
- font-size: 19px;
- padding: 0%;
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
 }
 
 
+/* JOIN */
 
+/* CREATE */
 
+/* ABOUT */
 
+.aboutP{
+  padding: 15px;
+  background-color:rgba(70, 160, 235, 0.5);
+  color:white;
+  border-radius: 1rem;
+  text-align: center;
+}
+/* INSTRUCTIONS */
+.instructionCont {
+  padding: 15px;
+  background-color:rgba(70, 160, 235, 0.5); 
+  color:white;
+  border-radius: 1rem;
+  text-align: center;
+}
 /* START OF GAMEROOM STYLING*/
 
 /* start of chat box styling */
