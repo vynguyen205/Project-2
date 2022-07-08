@@ -60,7 +60,28 @@ setTimeout(() => {
   socket.emit('join room', JSON.stringify({ room_name, join_username }));
 }, 1000);
 
-//add users to the DOM
-const userList = (users) => {
-  
+// add users to the DOM
+const userList = () => {
+  const room_name = window.location.pathname.split('/')[3];
+  //grab the room name from the url & get the room id
+  getData(`api/rooms/${room_name}`).then((data) => {
+    // console.log(data);
+    const room_id = data.id;
+    // console.log(room_id);
+    //get the users in the room
+    getData(`api/users/room_id/${room_id}`).then((data) => {
+      console.log(data);
+      //loop through the users and display them in the DOM
+      data.forEach((user) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<p>${user.username}</p>`;
+        currentPlayers.appendChild(li);
+      });
+    });
+  });
 };
+
+userList();
+
+// currentPlayers.innerHTML = `
+//   ${users.map((user) => `<li>${user.username}</li>`).join('')}`;

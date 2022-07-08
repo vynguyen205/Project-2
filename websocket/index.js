@@ -61,7 +61,9 @@ const createWSEvents = async (io) => {
 
         // console.log(`!!!!!!`, user);
 
-        socket.broadcast.to(room_name).emit('message', formatMessage(user_name, message));
+        socket.broadcast
+          .to(room_name)
+          .emit('message', formatMessage(user_name, message));
       });
       //this runs when the user disconnects from the server
       socket.on('disconnect', () => {
