@@ -1,4 +1,6 @@
 //DOM ELEMENts
+const socket = io();
+socket.io.connect(window.location.hostname);
 // create user
 const createUser = document.getElementById('create-username');
 const joinUsername = document.getElementById('join-username');
@@ -13,7 +15,7 @@ const joinRoomPass = document.querySelector('#join-room-password');
 
 //adds a new user to the server
 let users = [];
-
+let user;
 // Confirm that user is connected to the server
 
 // get data from server to create a new room
@@ -38,16 +40,16 @@ const createRoom = async () => {
 
     console.log(fetchData);
     const dataReturn = await fetchData.json();
-    console.log(dataReturn);
-
+    console.log(`FRONTEND ROOM CREATED`, dataReturn);
+    user = user_name;
     //checkiing for null values
     if (room_name === '' || roomPassword === '') {
       alert('Please enter a room name and password');
     }
     //redirect to the room
-    window.location.href = `api/rooms/${room_name}`;
 
-    socket.emit('message');
+    // socket.emit('createRoom', { room_name, user_name });
+    window.location.href = `/game/room_name/${room_name}?user_name=${user_name}`;
   } catch (err) {
     console.log(err);
   }
@@ -60,7 +62,7 @@ const joinRoomFunction = async () => {
 
   try {
     const fetchData = await fetch(`api/rooms/${room_name}`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -74,15 +76,19 @@ const joinRoomFunction = async () => {
 
     console.log(fetchData);
     const dataReturn = await fetchData.json();
-    console.log(dataReturn);
+    console.log(`FRONTEND FETCHED DATA:`, dataReturn);
+    user = join_username;
 
-    socket.emit('joinRoom', { room_name, join_username });
     //checkiing for null values
     if (room_name === '' || roomPassword === '') {
       alert('Please enter a room name and password');
     }
     //redirect to the room
-    window.location.href = `api/rooms/${room_name}`;
+    // alert(username);
+    window.location.href = `/game/room_name/${room_name}?user_name=${join_username}`;
+    socket.emit('join room', JSON.stringify({ room_name, join_username }));
+    console.log(socket);
+    // socket.emit('Chat Message', `comeshjitk`);
   } catch (err) {
     console.log(err);
   }

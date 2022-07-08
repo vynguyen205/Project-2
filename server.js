@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //blank users object to store all the users connected to the server
-let users = []
+let users = [];
 
 //settinng up event for when user connects
 //session config
