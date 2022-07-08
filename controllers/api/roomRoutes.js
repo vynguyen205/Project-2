@@ -69,16 +69,18 @@ router.post(`/:roomName`, async (req, res) => {
   }
 });
 
-//get room by roomName
+//get all room information by the room name
 router.get(`/:roomName`, async (req, res) => {
   try {
-    const roomData = await Room.findAll(req.params.roomName);
+    const roomData = await Room.findOne({
+      where: { roomName: req.params.roomName },
+    });
     //maybe we lookup record from db using roomid
     console.log(`🧸 User is in game room`);
 
     if (res.status(200)) {
       res.json(roomData);
-      res.render('game_room', { roomName: req.params.roomName });
+      // res.render('game_room', { roomName: req.params.roomName });
     }
     //render the view game-room.handlebars
   } catch (err) {
