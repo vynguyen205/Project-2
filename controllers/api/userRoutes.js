@@ -42,9 +42,11 @@ router.get('/:avatar', async (req, res) => {
   const userData = await User.findByPk(req.params.avatar);
   return res.json(userData);
 });
-
-router.get('/:room_id', async (req, res) => {
-  const userData = await User.findByPk(req.params.room_id);
+//find all users with the same room id
+router.get('/room_id/:room_id', async (req, res) => {
+  const userData = await User.findAll({
+    where: { room_id: req.params.room_id },
+  });
   return res.json(userData);
 });
 
