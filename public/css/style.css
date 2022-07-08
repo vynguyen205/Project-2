@@ -45,38 +45,6 @@ body {
 
 /* HP BUTTONS */
 
-/*
-
-@keyframes pulse{
-  from { transform: scale(1); }
-  50% { transform: scale(0.85); }
-  to { transform: scale(1); }
-}
-
-#trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn{
-  background-color: aquamarine;
-  border-radius: 50px;
-  color: white;
-}
-
-#trigger1-btn:hover, #trigger2-btn:hover, #trigger3-btn:hover, #trigger4-btn:hover{
-  animation-name: pulse;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-}
-
-
-.leave-btn {
-  cursor: pointer;
-  padding: 5px 15px;
-  background: var(--light-color);
-  color: var(--dark-color-a);
-  border: 0;
-  font-size: 17px;
-}
-
-*/
-
 #trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn{
   min-width: 150px;
   min-height: 30px;
@@ -98,7 +66,7 @@ body {
   padding: 10px;
   }
 
-button::before {
+.button.btnHome::before {
   content: '';
   border-radius: 1000px;
   min-width: calc(150px + 12px);
@@ -113,16 +81,16 @@ button::before {
   transition: all .3s ease-in-out 0s;
 }
 
-button:hover, button:focus {
+.button.btnHome:hover, .button.btnHome:focus {
   color: white;
   transform: translateY(-6px);
 }
 
-button:hover::before, button:focus::before {
+.button.btnHome:hover::before, .button.btnHome:focus::before {
   opacity: 1;
 }
 
-button::after {
+.button.btnHome::after {
   content: '';
   width: 15px; height: 15px;
   border-radius: 100%;
@@ -135,7 +103,7 @@ button::after {
   animation: ring 1.5s infinite;
 }
 
-button:hover::after, button:focus::after {
+.button.btnHome:hover::after, .button.btnHome:focus::after {
   animation: none;
   display: none;
 }
@@ -153,6 +121,8 @@ button:hover::after, button:focus::after {
   }
 }
 /* Join Page */
+
+
 .join-container {
   max-width: 500px;
   margin: 80px auto;
@@ -209,7 +179,10 @@ button:hover::after, button:focus::after {
   margin: 0;
   padding: 0;
 }
+
 /* home page modal styling */
+
+
 
 .modal-wrap {
  position: fixed;
@@ -226,7 +199,7 @@ button:hover::after, button:focus::after {
  margin-top: 20px;
 } */
 
-main {
+ main {
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -241,16 +214,6 @@ main button {
 main > p {
  margin-bottom: 45px;
 }
-
-.aboutCont {
- margin: 74;
- text-align: center;
- font-size: 19px;
- padding: 0%;
-}
-
-
-
 
 
 /* START OF GAMEROOM STYLING*/
