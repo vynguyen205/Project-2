@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+
 /* :root {
   --dark-color-a: #667aff;
   --dark-color-b: #7386ff;
@@ -47,13 +49,50 @@ body {
 
 /* TITLE */
 
-.title{
-  display: flex;
-  color:#fff;
-  margin: 30px;
-  padding-bottom: 15px;
+.welcomeContainer{
+  position: relative;
 }
 
+.welcomeContent{
+  text-align: center;
+  font-size: 70px;
+  font-family: 'Titan One',s sans-serif;
+  color: #fff;
+  padding-top: 155px;
+  padding-bottom: 105px;
+}
+
+
+[class*="blobs"]
+	{mix-blend-mode:color;animation:blobs 15s ease-in-out infinite alternate}
+
+.blobs_1{
+	background:#6fb799;
+	width:395px;
+	height:370px;
+	top:110px;
+	left:415px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 55px;
+  left: 35%;
+	}
+
+  @keyframes blobs{
+    0%{border-radius:26% 74% 61% 39% / 54% 67% 33% 46%}
+    10%{border-radius:74% 26% 47% 53% / 68% 46% 54% 32%}
+    20%{border-radius:48% 52% 30% 70% / 27% 37% 63% 73%}
+    30%{border-radius:73% 27% 57% 43% / 28% 67% 33% 72%}
+    40%{border-radius:63% 37% 56% 44% / 25% 28% 72% 75%}
+    50%{border-radius:39% 61% 70% 30% / 61% 29% 71% 39%}
+    60%{border-radius:27% 73% 29% 71% / 73% 51% 49% 27%}
+    70%{border-radius:39% 61% 65% 35% / 74% 65% 35% 26%}
+    80%{border-radius:55% 45% 37% 63% / 38% 30% 70% 62%}
+    90%{border-radius:25% 75% 70% 30% / 39% 50% 50% 61%}
+    100%{border-radius:66% 34% 33% 67% / 65% 73% 27% 35%}
+    }
 /* HP BUTTONS */
 
 #trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn{
@@ -173,6 +212,10 @@ main button {
   background-color: #fff;
 }
 
+.section-modal-wrap .field {
+  display: flex;
+  justify-content: center;
+}
 
 /* JOIN */
 
