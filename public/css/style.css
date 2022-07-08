@@ -180,9 +180,21 @@ main button {
 
 /* ABOUT */
 
+.aboutP{
+  padding: 15px;
+  background-color:rgba(70, 160, 235, 0.5);
+  color:white;
+  border-radius: 1rem;
+  text-align: center;
+}
 /* INSTRUCTIONS */
-
-
+.instructionCont {
+  padding: 15px;
+  background-color:rgba(70, 160, 235, 0.5); 
+  color:white;
+  border-radius: 1rem;
+  text-align: center;
+}
 /* START OF GAMEROOM STYLING*/
 
 /* start of chat box styling */
