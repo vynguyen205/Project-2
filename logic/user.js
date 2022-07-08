@@ -28,8 +28,8 @@ const socket = require('socket.io');
 // };
 
 //get current user
-// const getCurrentUser = (id) => {
-//   return User.findOne({ where: { user: id } });
-// };
+const getCurrentUser = (id) => {
+  return User.findOne({ where: { user: id } });
+};
 
 module.exports = { getCurrentUser };

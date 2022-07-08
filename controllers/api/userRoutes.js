@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll();
 
-    console.log('userData', userData);
+    // console.log('userData', userData);
     res.status(200).json(userData);
     // const room = await Room.findOne({
     // include: [{model: Room}],
