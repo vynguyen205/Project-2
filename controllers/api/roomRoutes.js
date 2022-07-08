@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Room, User } = require('../../models');
 const Word = require('../../models/words');
-const { userJoin } = require('../../logic/user');
+const randomAvatar = require('../../logic/randomAvatars');
 
 //get all rooms
 router.get('/', async (req, res) => {
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//get one room
+//get room by roomName
 router.get(`/:roomName`, async (req, res) => {
   try {
     const roomData = await Room.findOne(req.params.id, {});
@@ -31,31 +31,64 @@ router.get(`/:roomName`, async (req, res) => {
   }
 });
 
-//create room
-router.post(`/`, async (req, res) => {
+//update room
+router.put(`/:roomName`, async (req, res) => {
+  console.log(req.body);
+  const { user_name, ...roomData } = req.body;
   try {
-    const createRoom = await Room.create(req.body);
-    //   {
-    //     room_name: req.body.room_name,
-    //     password: req.body.roomPassword,
-    //   },
-    //   {
-    //     include: [{ model: User }],
-    //     attribute: ['room_name', 'password'],
-    //   }
-    // );
+    const joinRoom = await Room.update(req.body);
+    //maybe we lookup record from db using roomid
+    console.log(`🧸 User is in game room`);
+
+    const createreJoinedUser = await User.create({
+      username: user_name,
+      room_id: joinRoom.id,
+      socket_id: req.body.socket_id,
+      avatar: randomAvatar(),
+    });
+
+    console.log(`JOINED USER CREATED:`, createreJoinedUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//create room and create user
+router.post(`/`, async (req, res) => {
+  console.log(req.body);
+  const { user_name, ...roomData } = req.body;
+  try {
+    //create room in db
+    const createRoom = await Room.create(roomData);
+    //create user in db
+    const createdUser = await User.create({
+      username: user_name,
+      room_id: createRoom.id,
+      socket_id: req.body.socket_id,
+      avatar: randomAvatar(),
+    });
+
+    console.log('!!!!!', createdUser);
+
     res.status(200).json(createRoom);
 
     req.session.save(() => {
       req.session.roomSave = true;
     });
-    //create user in db
-    const createdUser = await userJoin();
-    res.status(200).json(createRoom);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
+
+// router.put('/roomName', async (req, res) => {
+//   console.log(req.body);
+//   const { user_name, ...roomData } = req.body;
+//   try {
+//     let updateRoom = await Room.findOne(req.body);
+
+//   } catch (err) {}
+// });
 
 //DELETE room
 router.delete('/:roomid', async (req, res) => {
