@@ -1,7 +1,8 @@
 //DOM ELEMENT
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
-const typedName = document.getElementById('create-username');
+const currentPlayers = document.getElementById('players');
+
 //when a user is connected a console log is displaying the user's id.
 
 // const socket = io();
@@ -58,3 +59,8 @@ setTimeout(() => {
   console.log('room', room_name);
   socket.emit('join room', JSON.stringify({ room_name, join_username }));
 }, 1000);
+
+//add users to the DOM
+const userList = (users) => {
+  
+};
