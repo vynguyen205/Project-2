@@ -5,7 +5,7 @@ const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
 const getRandomWord = require('../logic/getRandomWord');
-// const { getCurrentUser } = require('../logic/user');
+
 
 //past messages that were stored in the database
 const messages = {
@@ -56,7 +56,6 @@ const createWSEvents = async (io) => {
       socket.on('randomWord', async (data) => {
         console.log('socket', socket);
         const { room_name, user_name } = JSON.parse(data);
-
         console.log(chalk.yellow('Getting Random Word: ', room_name));
         const randomWord = await getRandomWord();
         io.to(room_name).emit('word selected', { artist: user_name });
@@ -66,6 +65,17 @@ const createWSEvents = async (io) => {
           'message',
           formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
         );
+      //this runs when the user sends a message
+      socket.on('Chat Message', async (data) => {
+        const { user_name, message, room_name } = JSON.parse(data);
+        // socket.broadcast.emit('message', formatMessage('USER', message));
+        console.log(chalk.blue(`Message Received: ${message}`));
+
+        // const user = await getCurrentUser(socket.id);
+
+        // console.log(`!!!!!!`, user);
+
+        socket.broadcast.to(room_name).emit('message', formatMessage(user_name, message));
       });
 
       //this runs when the user sends a message
