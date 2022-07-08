@@ -2,8 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-@import "bourbon";
-
 /* :root {
   --dark-color-a: #667aff;
   --dark-color-b: #7386ff;
@@ -41,6 +39,15 @@ body {
   animation: bgcolor 20s infinite;
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
+}
+
+/* TITLE */
+
+.title{
+  display: flex;
+  color:#fff;
+  margin: 30px;
+  padding-bottom: 15px;
 }
 
 /* HP BUTTONS */
@@ -121,7 +128,6 @@ body {
   }
 }
 /* Join Page */
-
 
 .join-container {
   max-width: 500px;
