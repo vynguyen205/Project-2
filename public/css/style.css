@@ -10,7 +10,9 @@
   --error-color: #d9534f;
 } */
 
-/* Home Page */
+/* X */
+
+/* Background */
 
 @keyframes bgcolor {
   0% {
@@ -40,6 +42,8 @@ body {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
+
+/* HomePage */
 
 /* TITLE */
 
@@ -127,83 +131,14 @@ body {
     opacity: 0;
   }
 }
-/* Join Page */
-
-.join-container {
-  max-width: 500px;
-  margin: 80px auto;
-  color: rgb(252, 248, 248);
-}
-
-.join-header {
-  text-align: center;
-  padding: 20px;
-  background: var(--dark-color-a);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.join-main {
-  padding: 30px 40px;
-  background: var(--dark-color-b);
-}
-
-.join-main p {
-  margin-bottom: 20px;
-}
-
-.join-main .form-control {
-  margin-bottom: 20px;
-}
-
-.join-main label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.join-main input[type='text'] {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main select {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main .btn {
-  margin-top: 20px;
-  width: 100%;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 /* home page modal styling */
-
-
 
 .modal-wrap {
  position: fixed;
  width: 650px;
  top: 30%;
 }
-
-
-/* .mainCont button {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- margin-top: 20px;
-} */
 
  main {
  display: flex;
@@ -213,13 +148,25 @@ body {
 }
 
 main button {
- margin-top: 20px;
+  margin-top: 20px;
+  
+ }
  
-}
+ main > p {
+  margin-bottom: 45px;
+ }
 
-main > p {
- margin-bottom: 45px;
-}
+
+/* Button Internal Content Styling */
+
+
+/* JOIN */
+
+/* CREATE */
+
+/* ABOUT */
+
+/* INSTRUCTIONS */
 
 
 /* START OF GAMEROOM STYLING*/
