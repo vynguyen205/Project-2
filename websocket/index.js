@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
+const getRandomWord = require('../logic/getRandomWord');
 // const { getCurrentUser } = require('../logic/user');
 
 //past messages that were stored in the database
@@ -46,9 +47,25 @@ const createWSEvents = async (io) => {
         socket.join(room_name); // needs a unique identifier for the rooom
 
         //broadcast to all users except for the actual user that joined that a new user has joined
-        socket.broadcast
-          .to(room_name)
-          .emit('message', formatMessage(bot, `A user has joined the chat!`));
+        io.to(room_name).emit(
+          'message',
+          formatMessage(bot, `A user has joined the chat!`)
+        );
+      });
+      //emit random word to one user only
+      socket.on('randomWord', async (data) => {
+        console.log('socket', socket);
+        const { room_name, user_name } = JSON.parse(data);
+
+        console.log(chalk.yellow('Getting Random Word: ', room_name));
+        const randomWord = await getRandomWord();
+        io.to(room_name).emit('word selected', { artist: user_name });
+
+        //broadcast to artist their word
+        io.to(socket.id).emit(
+          'message',
+          formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
+        );
       });
 
       //this runs when the user sends a message
@@ -60,11 +77,12 @@ const createWSEvents = async (io) => {
         // const user = await getCurrentUser(socket.id);
 
         // console.log(`!!!!!!`, user);
+        //check to see if guessed word is correct
+        
 
-        socket.broadcast
-          .to(room_name)
-          .emit('message', formatMessage(user_name, message));
+        io.to(room_name).emit('message', formatMessage(user_name, message));
       });
+
       //this runs when the user disconnects from the server
       socket.on('disconnect', () => {
         //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
