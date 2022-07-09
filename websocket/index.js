@@ -8,7 +8,7 @@ const getRandomWord = require('../logic/getRandomWord');
 // const { getCurrentUser } = require('../logic/user');
 
 //past messages that were stored in the database
-const bot = 'DÜDLE Bot';
+const bot = 'DÜDL Bot';
 const users = {};
 let randomWord = '';
 
