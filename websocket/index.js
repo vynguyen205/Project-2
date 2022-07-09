@@ -98,13 +98,15 @@ const createWSEvents = async (io) => {
         //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
         io.emit('message', 'A user has left the room');
       });
-    });
+  });
+})
   } catch (err) {
     console.log(
       chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
     );
   }
 };
+
 const initSocket = (server) => {
   const io = socket(server);
   createWSEvents(io);
