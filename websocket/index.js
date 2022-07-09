@@ -6,7 +6,6 @@ const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
 const getRandomWord = require('../logic/getRandomWord');
 
-
 //past messages that were stored in the database
 const messages = {
   general: [],
@@ -65,47 +64,45 @@ const createWSEvents = async (io) => {
           'message',
           formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
         );
-      //this runs when the user sends a message
-      socket.on('Chat Message', async (data) => {
-        const { user_name, message, room_name } = JSON.parse(data);
-        // socket.broadcast.emit('message', formatMessage('USER', message));
-        console.log(chalk.blue(`Message Received: ${message}`));
+        //this runs when the user sends a message
+        socket.on('Chat Message', async (data) => {
+          const { user_name, message, room_name } = JSON.parse(data);
+          // socket.broadcast.emit('message', formatMessage('USER', message));
+          console.log(chalk.blue(`Message Received: ${message}`));
 
-        // const user = await getCurrentUser(socket.id);
+          socket.broadcast
+            .to(room_name)
+            .emit('message', formatMessage(user_name, message));
+        });
 
-        // console.log(`!!!!!!`, user);
+        //this runs when the user sends a message
+        socket.on('Chat Message', async (data) => {
+          const { user_name, message, room_name } = JSON.parse(data);
+          // socket.broadcast.emit('message', formatMessage('USER', message));
+          console.log(chalk.blue(`Message Received: ${message}`));
 
-        socket.broadcast.to(room_name).emit('message', formatMessage(user_name, message));
+          //check to see if guessed word is correct
+          // if (message.toLowerCase() === randomWord.dataValues.word) {
+          //   io.to(socket.id).emit(
+          //     'message',
+          //     formatMessage(bot, `You guessed the word!`)
+          //   );
+          //   io.to(room_name).emit(
+          //     'message',
+          //     formatMessage(bot, `${user_name} guessed the word!`)
+          //   );
+          // }
+
+          io.to(room_name).emit('message', formatMessage(user_name, message));
+        });
+
+        //this runs when the user disconnects from the server
+        socket.on('disconnect', () => {
+          //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
+          io.emit('message', 'A user has left the room');
+        });
       });
-
-      //this runs when the user sends a message
-      socket.on('Chat Message', async (data) => {
-        const { user_name, message, room_name } = JSON.parse(data);
-        // socket.broadcast.emit('message', formatMessage('USER', message));
-        console.log(chalk.blue(`Message Received: ${message}`));
-
-        //check to see if guessed word is correct
-        // if (message.toLowerCase() === randomWord.dataValues.word) {
-        //   io.to(socket.id).emit(
-        //     'message',
-        //     formatMessage(bot, `You guessed the word!`)
-        //   );
-        //   io.to(room_name).emit(
-        //     'message',
-        //     formatMessage(bot, `${user_name} guessed the word!`)
-        //   );
-        // }
-
-        io.to(room_name).emit('message', formatMessage(user_name, message));
-      });
-
-      //this runs when the user disconnects from the server
-      socket.on('disconnect', () => {
-        //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
-        io.emit('message', 'A user has left the room');
-      });
-  });
-})
+    });
   } catch (err) {
     console.log(
       chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))

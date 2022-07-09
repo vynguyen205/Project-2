@@ -19,8 +19,6 @@ socket.on('message', (message) => {
   }
 });
 
-// socket.emit('💃🏻 Join Server', socket.id);
-
 //message event
 chatForm?.addEventListener('submit', (e) => {
   e.preventDefault();
