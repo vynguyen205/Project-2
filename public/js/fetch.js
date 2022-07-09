@@ -1,6 +1,6 @@
 //These are all the view routes for your application
 async function getData(url) {
-  const fetchData = await fetch(`https://dudl.herokuapp.com/${url}`, {});
+  const fetchData = await fetch(`/${url}`, {});
   const dataReturn = await fetchData.json();
   return dataReturn;
 }
