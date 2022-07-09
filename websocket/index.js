@@ -8,12 +8,6 @@ const getRandomWord = require('../logic/getRandomWord');
 // const { getCurrentUser } = require('../logic/user');
 
 //past messages that were stored in the database
-const messages = {
-  general: [],
-  random: [],
-  jokes: [],
-  javascript: [],
-};
 const bot = 'DÜDLE Bot';
 const users = {};
 let randomWord = '';
@@ -65,7 +59,7 @@ const createWSEvents = async (io) => {
         //broadcast to artist their word
         io.to(socket.id).emit(
           'message',
-          formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
+          formatMessage(bot, `Your word is: ${randomWord?.dataValues?.word}`)
         );
       });
 
@@ -76,7 +70,7 @@ const createWSEvents = async (io) => {
         console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
-        if (message.toLowerCase() === randomWord.dataValues.word) {
+        if (message.toLowerCase() === randomWord?.dataValues?.word) {
           io.to(socket.id).emit(
             'message',
             formatMessage(bot, `You guessed the word!`)
@@ -94,6 +88,13 @@ const createWSEvents = async (io) => {
       socket.on('disconnect', () => {
         //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
         io.emit('message', 'A user has left the room');
+      });
+
+      // 🧑‍🎨 broadcast drawing to all users
+      socket.on('drawing', ({ room_name, ...ctx }) => {
+        console.log('DRAWING', ctx);
+        console.log('in room', room_name);
+        socket.to(room_name).emit('drawing-board', ctx);
       });
     });
   } catch (err) {
