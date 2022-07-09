@@ -78,6 +78,7 @@ const createWSEvents = async (io) => {
 
           io.to(room_name).emit('stopGame');
           io.to(socket.id).emit('message', formatMessage(user_name, message));
+          
         } else {
           io.to(room_name).emit('message', formatMessage(user_name, message));
         }
