@@ -90,7 +90,6 @@ userList();
 let time = 60;
 socket.on('word selected', (data) => {
   //write logic for starting countdown or something on FE
-
   console.log('this person is drawing -', data.artist);
 
   document.querySelector(
