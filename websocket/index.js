@@ -1,6 +1,6 @@
 const socket = require('socket.io');
 const formatMessage = require('../logic/message');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
@@ -17,7 +17,7 @@ const createWSEvents = async (io) => {
   try {
     //this runs when the user connects to the server
     io.on('connection', (socket) => {
-      console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
+      // console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
 
       // console.log(`creating Room`);
       // socket.on('createRoom', () => {
@@ -36,7 +36,7 @@ const createWSEvents = async (io) => {
 
       socket.on('join room', (data) => {
         const { room_name, join_username } = JSON.parse(data);
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
+        // console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
         // const newUser = userJoin(username, room, socket.id )
 
         socket.join(room_name); // needs a unique identifier for the rooom
@@ -53,7 +53,7 @@ const createWSEvents = async (io) => {
         console.log('socket', socket);
         const { room_name, user_name } = JSON.parse(data);
 
-        console.log(chalk.yellow('Getting Random Word: ', room_name));
+        // console.log(chalk.yellow('Getting Random Word: ', room_name));
         randomWord = await getRandomWord();
         io.to(room_name).emit('word selected', { artist: user_name });
 
@@ -67,7 +67,7 @@ const createWSEvents = async (io) => {
       //this runs when the user sends a message
       socket.on('Chat Message', async (data) => {
         const { user_name, message, room_name } = JSON.parse(data);
-        console.log(chalk.blue(`Message Received: ${message}`));
+        // console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
         if (message.toLowerCase() === randomWord?.dataValues?.word) {
@@ -78,7 +78,6 @@ const createWSEvents = async (io) => {
 
           io.to(room_name).emit('stopGame');
           io.to(socket.id).emit('message', formatMessage(user_name, message));
-          
         } else {
           io.to(room_name).emit('message', formatMessage(user_name, message));
         }
@@ -97,7 +96,8 @@ const createWSEvents = async (io) => {
     });
   } catch (err) {
     console.log(
-      chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
+      // chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
+      err
     );
   }
 };

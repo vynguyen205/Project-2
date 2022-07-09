@@ -1,6 +1,6 @@
 //required libraries
 const express = require('express');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 const routes = require('./controllers');
 const http = require('http');
 const socket = require('socket.io');
@@ -55,10 +55,6 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   server.listen(PORT, () =>
-    console.log(
-      chalk.greenBright(
-        `🌎 API Server now listening on http://localhost:${PORT} 🌎`
-      )
-    )
+    console.log(`🌎 API Server now listening on http://localhost:${PORT} 🌎`)
   );
 });

@@ -1,5 +1,5 @@
-const socket = require('socket.io');
-const chalk = require('chalk');
+// const socket = require('socket.io');
+// const chalk = require('chalk');
 const { promisify } = require('util');
 const { User } = require('../models');
 
@@ -9,16 +9,16 @@ const createWSEvents = async (io) => {
   io.on = promisify(io.on);
   try {
     io.on('connection', (socket) => {
-      console.log(chalk.green(`Client Connected`, socket.id));
+      // console.log(chalk.green(`Client Connected`, socket.id));
 
       socket.on('createRoom', ({ room_name }) => {
         //check to see if someone already made a room with the same id
         if (room_name === room_name) {
-          console.log(chalk.red('Room already exists'));
+          // console.log(chalk.red('Room already exists'));
           socket.emit('Room Exists: ', room_name);
         } //if not, create a new room
         else {
-          console.log(chalk.yellow('Creating Room: ', room_name));
+          // console.log(chalk.yellow('Creating Room: ', room_name));
         }
         //broadcasting the room to all users. letting them know that a new room has been created
 
@@ -90,9 +90,8 @@ const createWSEvents = async (io) => {
       });
     });
   } catch (err) {
-    console.log(
-      chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
-    );
+    console.log(err);
+    // chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
   }
 };
 const initSocket = (server) => {
