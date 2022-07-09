@@ -74,11 +74,17 @@ const createWSEvents = async (io) => {
         // socket.broadcast.emit('message', formatMessage('USER', message));
         console.log(chalk.blue(`Message Received: ${message}`));
 
-        // const user = await getCurrentUser(socket.id);
-
-        // console.log(`!!!!!!`, user);
         //check to see if guessed word is correct
-        
+        if (message.toLowerCase() === randomWord.dataValues.word) {
+          io.to(socket.id).emit(
+            'message',
+            formatMessage(bot, `You guessed the word!`)
+          );
+          io.to(room_name).emit(
+            'message',
+            formatMessage(bot, `${user_name} guessed the word!`)
+          );
+        }
 
         io.to(room_name).emit('message', formatMessage(user_name, message));
       });
