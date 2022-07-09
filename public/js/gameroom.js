@@ -87,7 +87,6 @@ const userList = () => {
 
 userList();
 
-let time = 60;
 socket.on('word selected', (data) => {
   //write logic for starting countdown or something on FE
 
@@ -96,28 +95,52 @@ socket.on('word selected', (data) => {
   document.querySelector(
     '.who-is-drawing'
   ).innerHTML = `${data.artist} is drawing`;
-  //display time 60 seconds and count down
-  const timer = setInterval(() => {
-    const timeEl = document.querySelector('.timer');
-    timeEl.innerHTML = `Time Left - ${time}`;
-    if (timeEl.innerHTML <= 0) {
-      clearInterval(timer);
-      document.querySelector('.who-is-drawing').innerHTML = 'TIMES UP';
-      //times up emit an event to end round, start next round?
-    }
+
+  startTimer();
+});
+//display time 60 seconds and count down
+// const timer = setInterval(() => {
+//   const timeEl = document.querySelector('.timer');
+//   timeEl.innerHTML = `Time Left - ${time}`;
+//   if (timeEl.innerHTML === 0) {
+//     clearInterval(timer);
+//     document.querySelector('.who-is-drawing').innerHTML = 'TIMES UP';
+//     //times up emit an event to end round, start next round?
+//   }
+//
+let time = 60;
+let countdown;
+const timeEl = document.querySelector('.timer');
+
+//start timer for drawing
+const startTimer = () => {
+  countdown = setInterval(() => {
     time--;
+    timeEl.innerHTML = `Time Left - ${time}`;
+
+    if (time <= 0) {
+      timeEl.innerHTML = 'GAME OVER';
+      clearInterval(countdown);
+    }
   }, 1000);
+
 }
+
 
 //display random word and emit to one user only
 const displayRandomWord = () => {
   const user_name = window.location.search.split('=')[1];
   const room_name = window.location.pathname.split('/')[3];
   console.log('clicked randomword');
+
+  //if the button is clicked, then hide it when the user is drawing
+  document.querySelector('.start-btn').style.display = 'none';
   socket.emit('randomWord', JSON.stringify({ room_name, user_name }));
 };
 
-document.querySelector('.newword').addEventListener('click', displayRandomWord);
+document
+  .querySelector('.start-btn')
+  .addEventListener('click', displayRandomWord);
 
 //get random words to display to the dom
 // const randomWords = () => {
