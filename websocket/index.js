@@ -76,7 +76,7 @@ const createWSEvents = async (io) => {
         console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
-        if (message.toLowerCase() === randomWord.dataValues.word) {
+        if (message.toLowerCase() === randomWord?.dataValues?.word) {
           io.to(socket.id).emit(
             'message',
             formatMessage(bot, `You guessed the word!`)
@@ -88,6 +88,12 @@ const createWSEvents = async (io) => {
         }
 
         io.to(room_name).emit('message', formatMessage(user_name, message));
+      });
+
+      socket.on('drawing', ({ room_name, ...ctx }) => {
+        console.log('DRAWING', ctx);
+        console.log('in room', room_name);
+        socket.to(room_name).emit('drawing-board', ctx);
       });
 
       //this runs when the user disconnects from the server
