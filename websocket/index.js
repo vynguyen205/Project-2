@@ -5,7 +5,7 @@ const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
 const getRandomWord = require('../logic/getRandomWord');
-
+const { Http2ServerRequest } = require('http2');
 
 //past messages that were stored in the database
 const messages = {
@@ -65,40 +65,46 @@ const createWSEvents = async (io) => {
           'message',
           formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
         );
-      //this runs when the user sends a message
-      socket.on('Chat Message', async (data) => {
-        const { user_name, message, room_name } = JSON.parse(data);
-        // socket.broadcast.emit('message', formatMessage('USER', message));
-        console.log(chalk.blue(`Message Received: ${message}`));
+        //this runs when the user sends a message
+        socket.on('Chat Message', async (data) => {
+          const { user_name, message, room_name } = JSON.parse(data);
+          // socket.broadcast.emit('message', formatMessage('USER', message));
+          console.log(chalk.blue(`Message Received: ${message}`));
 
-        // const user = await getCurrentUser(socket.id);
+          // const user = await getCurrentUser(socket.id);
 
-        // console.log(`!!!!!!`, user);
+          // console.log(`!!!!!!`, user);
 
-        socket.broadcast
-          .to(room_name)
-          .emit('message', formatMessage(user_name, message));
-      });
+          socket.broadcast
+            .to(room_name)
+            .emit('message', formatMessage(user_name, message));
+        });
 
-      //this runs when the user sends a message
-      socket.on('Chat Message', async (data) => {
-        const { user_name, message, room_name } = JSON.parse(data);
-        // socket.broadcast.emit('message', formatMessage('USER', message));
-        console.log(chalk.blue(`Message Received: ${message}`));
+        //this runs when the user sends a message
+        socket.on('Chat Message', async (data) => {
+          const { user_name, message, room_name } = JSON.parse(data);
+          // socket.broadcast.emit('message', formatMessage('USER', message));
+          console.log(chalk.blue(`Message Received: ${message}`));
 
-        // const user = await getCurrentUser(socket.id);
+          // const user = await getCurrentUser(socket.id);
 
-        // console.log(`!!!!!!`, user);
-        //check to see if guessed word is correct
-        
+          // console.log(`!!!!!!`, user);
+          //check to see if guessed word is correct
 
-        io.to(room_name).emit('message', formatMessage(user_name, message));
-      });
+          io.to(room_name).emit('message', formatMessage(user_name, message));
+        });
 
-      //this runs when the user disconnects from the server
-      socket.on('disconnect', () => {
-        //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
-        io.emit('message', 'A user has left the room');
+        //broadcast drawing to users
+        socket.on('drawing', async (data) => {
+          const { user_name, drawing, room_name } = JSON.parse(data);
+          io.to(room_name).emit('drawing', drawing);
+        });
+
+        //this runs when the user disconnects from the server
+        socket.on('disconnect', () => {
+          //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
+          io.emit('message', 'A user has left the room');
+        });
       });
     });
   } catch (err) {
