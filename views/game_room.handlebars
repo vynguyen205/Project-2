@@ -3,31 +3,23 @@
     </div>
 <div class="game-room-header">
     <div class="randomWords">
-    <p>
-       
+    <p class="randoWords">
+        
           {{> randomWords }}
         
     </p>
     </div>
-
-    {{!-- <div class="userInfo">
-    <p>
-        USER IS DRAWING
-    </p>
-    </div> --}}
-
-    {{!-- <div class="time">
-    <p>
-        TIME
-    </p>
-    </div> --}}
-
+    <div class="who-is-drawing">
+        <p class="userInfo">
+        </p></div>
+    <div class="timer">
+        <p class="timeDisplay"></p>
+    </div> 
   <div>
       <h3 id="roomName"><i class="fas fa-comments"></i> Room Name: {{roomName}}</h3>
   </div>
 </div>
 
-</div>
 
 {{!-- inject drawing board and chat box here --}}
 {{> draw-chat }}

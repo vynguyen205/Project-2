@@ -498,7 +498,7 @@ a {
 .canvas-tools button {
   align-items: center;
   background-color: #1565c0;
-  width: 50px;
+  width: 60px;
   height: 30px;
   margin-top: 22px;
   border: none;
@@ -512,10 +512,10 @@ a {
   color: #fff;
   /* border-top-left-radius: 5px;
   border-top-right-radius: 5px; */
-  padding: 0px;
-  display: flex;
   align-items: center;
   justify-content: space-evenly;
+  display: flex;
+  width: auto;
 }
 
 .game-room-header p {
@@ -531,21 +531,46 @@ a {
 }
 
 .randomWords {
-  display: flex;
   align-items: center;
   justify-content: left;
 }
 
-#roomName {
-  /* padding-left: 200px; */
+.randoWords {
+  margin: 0;
+  text-align: center;
+  padding-inline-start: 23vw;
 }
 
+#roomName {
+  margin: 0;
+  text-align: center;
+}
+
+/* 
 .time-currentDrawer {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: space-evenly;
+} */
 
 .who-is-drawing {
-  margin: 0 15px 10px 0;
+  align-items: center;
+  justify-content: left;
+}
+
+.userInfo {
+  margin: 0;
+  text-align: center;
+  /* padding-inline-start: 5vw; */
+}
+
+.timer {
+  align-items: center;
+  justify-content: left;
+}
+
+.timeDisplay {
+  margin: 0;
+  text-align: center;
+  /* padding-inline-start: 5vw; */
 }
