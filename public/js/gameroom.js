@@ -107,7 +107,7 @@ socket.on('word selected', (data) => {
     }
     time--;
   }, 1000);
-});
+}
 
 //display random word and emit to one user only
 const displayRandomWord = () => {
