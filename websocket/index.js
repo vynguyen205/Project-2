@@ -7,15 +7,7 @@ const { json } = require('express/lib/response');
 const getRandomWord = require('../logic/getRandomWord');
 // const { getCurrentUser } = require('../logic/user');
 
-//past messages that were stored in the database
-const messages = {
-  general: [],
-  random: [],
-  jokes: [],
-  javascript: [],
-};
-const bot = 'DÜDLE Bot';
-const users = {};
+const bot = 'DÜDL Bot';
 let randomWord = '';
 
 const createWSEvents = async (io) => {
@@ -77,6 +69,7 @@ const createWSEvents = async (io) => {
 
         //check to see if guessed word is correct
         if (message.toLowerCase() === randomWord.dataValues.word) {
+          // const 'You Guessed Right!' =
           io.to(socket.id).emit(
             'message',
             formatMessage(bot, `You guessed the word!`)
