@@ -118,10 +118,7 @@ body {
 }
 /* HP BUTTONS */
 
-#trigger1-btn,
-#trigger2-btn,
-#trigger3-btn,
-#trigger4-btn {
+#trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn {
   min-width: 150px;
   min-height: 30px;
   font-family: 'Nunito', sans-serif;
@@ -131,11 +128,7 @@ body {
   font-weight: 700;
   color: white;
   background: #4fd1c5;
-  background: linear-gradient(
-    90deg,
-    rgba(129, 230, 217, 1) 0%,
-    rgba(79, 209, 197, 1) 100%
-  );
+  background: linear-gradient(90deg,rgba(129, 230, 217, 1) 0%,rgba(79, 209, 197, 1) 100%);
   border: none;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
@@ -161,14 +154,12 @@ body {
   transition: all 0.3s ease-in-out 0s;
 }
 
-.button.btnHome:hover,
-.button.btnHome:focus {
+.button.btnHome:hover, .button.btnHome:focus {
   color: white;
   transform: translateY(-6px);
 }
 
-.button.btnHome:hover::before,
-.button.btnHome:focus::before {
+.button.btnHome:hover::before, .button.btnHome:focus::before {
   opacity: 1;
 }
 
@@ -186,8 +177,7 @@ body {
   animation: ring 1.5s infinite;
 }
 
-.button.btnHome:hover::after,
-.button.btnHome:focus::after {
+.button.btnHome:hover::after, .button.btnHome:focus::after {
   animation: none;
   display: none;
 }
@@ -203,6 +193,26 @@ body {
     height: 250px;
     opacity: 0;
   }
+}
+
+.ctrlBtnP{
+  display: flex;
+  justify-content: center;
+}
+
+#join-room-btn, #create-room-btn, .gameCtrl {
+  margin: auto;
+  background: linear-gradient(90deg,rgba(129, 230, 217, 1) 0%,rgba(79, 209, 197, 1) 100%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+} 
+
+.gameCtrl{
+  font-size: 10px;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* home page modal styling */
@@ -242,11 +252,8 @@ main > p {
   align-items: center;
   justify-content: center;
   background-color: #fff;
-}
-
-.section-modal-wrap .field {
-  display: flex;
-  justify-content: center;
+  font-weight: 300;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* JOIN */
@@ -279,26 +286,26 @@ header,
   border-bottom: 1px solid #ccc;
 }
 
-/* .no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
-} 
+#dudl{
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Titan One', sans-serif;
+  color: #fff;
+  margin-top: 15px;
+  padding-bottom: 25px;
+}
 
- .no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-} 
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-} */
+.blobs_2{
+  background: linear-gradient(90deg,rgb(103, 157, 171) 0%,rgb(73, 164, 150) 100%);
+  width: 125px;
+  height: 110px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 15px;
+  left: 650px;
+}
 
 /* Chat box */
 
