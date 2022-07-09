@@ -561,7 +561,6 @@ a {
 .userInfo {
   margin: 0;
   text-align: center;
-  /* padding-inline-start: 5vw; */
 }
 
 .timer {
@@ -572,5 +571,4 @@ a {
 .timeDisplay {
   margin: 0;
   text-align: center;
-  /* padding-inline-start: 5vw; */
 }
