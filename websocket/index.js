@@ -38,7 +38,7 @@ const createWSEvents = async (io) => {
 
         console.log(chalk.yellow('Creating Room: ', room_name));
       });
-      console.log('ATACHING join room listener');
+      
       socket.on('join room', (data) => {
         const { room_name, join_username } = JSON.parse(data);
         console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
