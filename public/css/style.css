@@ -205,6 +205,15 @@ body {
   }
 }
 
+.ctrlBtnP{
+  display: flex;
+  justify-content: center;
+}
+
+.ctrlBtn{
+  margin: auto
+}
+
 /* home page modal styling */
 
 .modal-wrap {
