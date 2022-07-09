@@ -1,5 +1,3 @@
-// const socket = require('socket.io-client/lib/socket');
-
 //DOM ELEMENT
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');

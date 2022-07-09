@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/cosmo/bootstrap.min.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/cosmo/bootstrap.min.css');
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
@@ -49,53 +49,79 @@ body {
 
 /* TITLE */
 
-.welcomeContainer{
+.welcomeContainer {
   position: relative;
 }
 
-.welcomeContent{
+.welcomeContent {
   text-align: center;
   font-size: 70px;
-  font-family: 'Titan One',s sans-serif;
+  font-family: 'Titan One', s sans-serif;
   color: #fff;
   padding-top: 155px;
   padding-bottom: 105px;
 }
 
+[class*='blobs'] {
+  mix-blend-mode: color;
+  animation: blobs 15s ease-in-out infinite alternate;
+}
 
-[class*="blobs"]
-	{mix-blend-mode:color;animation:blobs 15s ease-in-out infinite alternate}
-
-.blobs_1{
-	background:#6fb799;
-	width:395px;
-	height:370px;
-	top:110px;
-	left:415px;
+.blobs_1 {
+  background: #6fb799;
+  width: 395px;
+  height: 370px;
+  top: 110px;
+  left: 415px;
   justify-content: center;
   align-items: center;
   display: flex;
   position: absolute;
   top: 55px;
   left: 35%;
-	}
+}
 
-  @keyframes blobs{
-    0%{border-radius:26% 74% 61% 39% / 54% 67% 33% 46%}
-    10%{border-radius:74% 26% 47% 53% / 68% 46% 54% 32%}
-    20%{border-radius:48% 52% 30% 70% / 27% 37% 63% 73%}
-    30%{border-radius:73% 27% 57% 43% / 28% 67% 33% 72%}
-    40%{border-radius:63% 37% 56% 44% / 25% 28% 72% 75%}
-    50%{border-radius:39% 61% 70% 30% / 61% 29% 71% 39%}
-    60%{border-radius:27% 73% 29% 71% / 73% 51% 49% 27%}
-    70%{border-radius:39% 61% 65% 35% / 74% 65% 35% 26%}
-    80%{border-radius:55% 45% 37% 63% / 38% 30% 70% 62%}
-    90%{border-radius:25% 75% 70% 30% / 39% 50% 50% 61%}
-    100%{border-radius:66% 34% 33% 67% / 65% 73% 27% 35%}
-    }
+@keyframes blobs {
+  0% {
+    border-radius: 26% 74% 61% 39% / 54% 67% 33% 46%;
+  }
+  10% {
+    border-radius: 74% 26% 47% 53% / 68% 46% 54% 32%;
+  }
+  20% {
+    border-radius: 48% 52% 30% 70% / 27% 37% 63% 73%;
+  }
+  30% {
+    border-radius: 73% 27% 57% 43% / 28% 67% 33% 72%;
+  }
+  40% {
+    border-radius: 63% 37% 56% 44% / 25% 28% 72% 75%;
+  }
+  50% {
+    border-radius: 39% 61% 70% 30% / 61% 29% 71% 39%;
+  }
+  60% {
+    border-radius: 27% 73% 29% 71% / 73% 51% 49% 27%;
+  }
+  70% {
+    border-radius: 39% 61% 65% 35% / 74% 65% 35% 26%;
+  }
+  80% {
+    border-radius: 55% 45% 37% 63% / 38% 30% 70% 62%;
+  }
+  90% {
+    border-radius: 25% 75% 70% 30% / 39% 50% 50% 61%;
+  }
+  100% {
+    border-radius: 66% 34% 33% 67% / 65% 73% 27% 35%;
+  }
+}
 /* HP BUTTONS */
 
-#trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn{
+#trigger1-btn,
+#trigger2-btn,
+#trigger3-btn,
+#trigger4-btn {
   min-width: 150px;
   min-height: 30px;
   font-family: 'Nunito', sans-serif;
@@ -104,47 +130,54 @@ body {
   letter-spacing: 1.3px;
   font-weight: 700;
   color: white;
-  background: #4FD1C5;
-  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  background: #4fd1c5;
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
   border: none;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(79,209,197,.64);
+  box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
   position: relative;
   padding: 10px;
-  }
+}
 
 .button.btnHome::before {
   content: '';
   border-radius: 1000px;
   min-width: calc(150px + 12px);
   min-height: calc(30px + 12px);
-  border: 6px solid #00FFCB;
-  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  border: 6px solid #00ffcb;
+  box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all .3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
-.button.btnHome:hover, .button.btnHome:focus {
+.button.btnHome:hover,
+.button.btnHome:focus {
   color: white;
   transform: translateY(-6px);
 }
 
-.button.btnHome:hover::before, .button.btnHome:focus::before {
+.button.btnHome:hover::before,
+.button.btnHome:focus::before {
   opacity: 1;
 }
 
 .button.btnHome::after {
   content: '';
-  width: 15px; height: 15px;
+  width: 15px;
+  height: 15px;
   border-radius: 100%;
-  border: 6px solid #00FFCB;
+  border: 6px solid #00ffcb;
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -153,7 +186,8 @@ body {
   animation: ring 1.5s infinite;
 }
 
-.button.btnHome:hover::after, .button.btnHome:focus::after {
+.button.btnHome:hover::after,
+.button.btnHome:focus::after {
   animation: none;
   display: none;
 }
@@ -174,37 +208,35 @@ body {
 /* home page modal styling */
 
 .modal-wrap {
- position: fixed;
- width: 650px;
- top: 30%;
+  position: fixed;
+  width: 650px;
+  top: 30%;
 }
 
- main {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 main button {
   margin-top: 20px;
-  
- }
- 
- main > p {
-  margin-bottom: 45px;
- }
+}
 
+main > p {
+  margin-bottom: 45px;
+}
 
 /* Button Internal Content Styling */
 
-.modal-background{
+.modal-background {
   background: rgba(41, 66, 157, 0.5);
   backdrop-filter: blur(10px);
   opacity: 80%;
 }
 
-.modal-content{
+.modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,18 +250,18 @@ main button {
 
 /* ABOUT */
 
-.aboutP{
+.aboutP {
   padding: 15px;
-  background-color:rgba(70, 160, 235, 0.5);
-  color:white;
+  background-color: rgba(70, 160, 235, 0.5);
+  color: white;
   border-radius: 1rem;
   text-align: center;
 }
 /* INSTRUCTIONS */
 .instructionCont {
   padding: 15px;
-  background-color:rgba(70, 160, 235, 0.5); 
-  color:white;
+  background-color: rgba(70, 160, 235, 0.5);
+  color: white;
   border-radius: 1rem;
   text-align: center;
 }
@@ -237,11 +269,12 @@ main button {
 /* START OF GAMEROOM STYLING*/
 
 /* start of chat box styling */
-header, .project:not(:last-child) {
+header,
+.project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
- /* .no-button {
+/* .no-button {
   background: none;
   border: none;
   padding: 0;
@@ -261,7 +294,6 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 } */
-
 
 /* Chat box */
 
@@ -315,7 +347,7 @@ header, .project:not(:last-child) {
 
 .chat-messages {
   padding: 30px;
-  max-height: 500px; 
+  max-height: 500px;
   overflow-y: scroll;
 }
 
@@ -377,10 +409,12 @@ body {
   font-family: 'Roboto', sans-serif;
   font: var(--light-color);
   font-size: 16px;
-  background: rgb(95,37,224);
-  background: linear-gradient(90deg, 
-  rgba(95,37,224,0.19061478758169936) 26%, 
-  rgba(61,37,224,0.30499387254901966) 100%);
+  background: rgb(95, 37, 224);
+  background: linear-gradient(
+    90deg,
+    rgba(95, 37, 224, 0.19061478758169936) 26%,
+    rgba(61, 37, 224, 0.30499387254901966) 100%
+  );
   /* margin: 4px; */
 }
 
@@ -393,10 +427,10 @@ a {
 }
 /* making drawing board and chat box side by side */
 .flex-container {
-display: flex;
-justify-content: space-around;
-display: flex;
-padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  display: flex;
+  padding: 5px;
 }
 
 /* drawing board styles */
@@ -406,7 +440,7 @@ padding: 5px;
   height: 100%;
   display: flex;
 }
- /* .drawing-board {
+/* .drawing-board {
   display: flex;
   width: fit-content;
   position: relative;
@@ -416,22 +450,22 @@ padding: 5px;
 } */
 
 #toolbar {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    padding: 5px;
-    width: 500px;
-    border-radius: 15px;
-    /* background-color: #202020; */
-    top: 650;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 5px;
+  width: 500px;
+  border-radius: 15px;
+  /* background-color: #202020; */
+  top: 650;
 }
 
 .canvas-tools {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    /* width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* width: 100%;
     height: 100%; */
 }
 
@@ -464,17 +498,45 @@ padding: 5px;
   margin-top: 22px;
   border: none;
   border-radius: 4px;
-  color:white;
+  color: white;
   padding: 2px;
 }
 
 /* game room styles */
 .game-room-header {
   color: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 15px;
+  /* border-top-left-radius: 5px;
+  border-top-right-radius: 5px; */
+  padding: 0px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.game-room-header p {
+  margin: 0px;
+}
+
+.gameRoom-name {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.randomWords {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+#roomName {
+  /* padding-left: 200px; */
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

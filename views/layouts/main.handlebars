@@ -40,18 +40,14 @@
     </div>
     </footer> }}
     {{! placeholder for where the view will be injected }}
-    {{! <script>
-      //when a user is connected a console log is displaying the user's id.
-      const socket = io(); socket.io.connect(window.location.hostname);
-      socket.on('user connected', (id) => console.log('new id is ', id));
-    </script> }}
+
     <script src='/socket.io/socket.io.js'></script>
+    <script src='/js/fetch.js'></script>
+    <script src='/js/frontend.js'></script>
+    <script src='/js/modal.js'></script>
+    <script src='/js/draw.js'></script>
+    <script src='/js/gameroom.js'></script>
   </body>
-  <script src='/js/fetch.js'></script>
-  <script src='/js/frontend.js'></script>
-  <script src='/js/modal.js'></script>
-  <script src='/js/draw.js'></script>
-  <script src='/js/gameroom.js'></script>
 
 </html>
 
