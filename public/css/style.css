@@ -4,13 +4,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 
-/* :root {
-  --dark-color-a: #667aff;
+:root {
+  /* --dark-color-a: #667aff; */
   --dark-color-b: #7386ff;
-  --light-color: #e6e9ff;
-  --success-color: #5cb85c;
-  --error-color: #d9534f;
-} */
+  /* --light-color: #e6e9ff; */
+  /* --success-color: #5cb85c;
+  --error-color: #d9534f; */
+}
 
 /* X */
 
@@ -118,7 +118,10 @@ body {
 }
 /* HP BUTTONS */
 
-#trigger1-btn, #trigger2-btn, #trigger3-btn, #trigger4-btn {
+#trigger1-btn,
+#trigger2-btn,
+#trigger3-btn,
+#trigger4-btn {
   min-width: 150px;
   min-height: 30px;
   font-family: 'Nunito', sans-serif;
@@ -128,7 +131,11 @@ body {
   font-weight: 700;
   color: white;
   background: #4fd1c5;
-  background: linear-gradient(90deg,rgba(129, 230, 217, 1) 0%,rgba(79, 209, 197, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
   border: none;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
@@ -154,12 +161,14 @@ body {
   transition: all 0.3s ease-in-out 0s;
 }
 
-.button.btnHome:hover, .button.btnHome:focus {
+.button.btnHome:hover,
+.button.btnHome:focus {
   color: white;
   transform: translateY(-6px);
 }
 
-.button.btnHome:hover::before, .button.btnHome:focus::before {
+.button.btnHome:hover::before,
+.button.btnHome:focus::before {
   opacity: 1;
 }
 
@@ -177,7 +186,8 @@ body {
   animation: ring 1.5s infinite;
 }
 
-.button.btnHome:hover::after, .button.btnHome:focus::after {
+.button.btnHome:hover::after,
+.button.btnHome:focus::after {
   animation: none;
   display: none;
 }
@@ -195,22 +205,28 @@ body {
   }
 }
 
-.ctrlBtnP{
+.ctrlBtnP {
   display: flex;
   justify-content: center;
 }
 
-#join-room-btn, #create-room-btn, .gameCtrl {
+#join-room-btn,
+#create-room-btn,
+.gameCtrl {
   margin: auto;
-  background: linear-gradient(90deg,rgba(129, 230, 217, 1) 0%,rgba(79, 209, 197, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
-} 
+}
 
-.gameCtrl{
+.gameCtrl {
   font-size: 10px;
   font-family: 'Nunito', sans-serif;
 }
@@ -286,7 +302,7 @@ header,
   border-bottom: 1px solid #ccc;
 }
 
-#dudl{
+#dudl {
   text-align: center;
   font-size: 50px;
   font-family: 'Titan One', sans-serif;
@@ -295,8 +311,12 @@ header,
   padding-bottom: 25px;
 }
 
-.blobs_2{
-  background: linear-gradient(90deg,rgb(103, 157, 171) 0%,rgb(73, 164, 150) 100%);
+.blobs_2 {
+  background: linear-gradient(
+    90deg,
+    rgb(103, 157, 171) 0%,
+    rgb(73, 164, 150) 100%
+  );
   width: 125px;
   height: 110px;
   justify-content: center;
@@ -310,11 +330,18 @@ header,
 /* Chat box */
 
 .chat-container {
-  max-width: 40%;
+  /* max-width: 40%; */
   height: fit-content;
   background: #fff;
   margin: 10px;
   overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+#msg {
+  border-radius: 15px;
+  margin: 5px;
 }
 
 .chat-header {
@@ -329,8 +356,9 @@ header,
 }
 
 .chat-main {
-  height: 36vh;
+  height: 22rem;
   display: grid;
+  background-color: --dark-color-b;
   /* grid-template-columns: 1fr 3fr; */
 }
 
@@ -353,14 +381,21 @@ header,
   margin-bottom: 15px;
 }
 
+#players {
+  text-align: center;
+  font-size: 20px;
+}
+
 .chat-sidebar ul li {
   padding: 10px 0;
 }
 
 .chat-messages {
-  padding: 30px;
-  max-height: 500px;
+  padding: 23px;
+  height: 19rem;
   overflow-y: scroll;
+  border-radius: 19px;
+  /* background: #f2f2f2; */
 }
 
 .chat-messages .message {
@@ -384,12 +419,13 @@ header,
 }
 
 .chat-form-container {
-  padding: 20px 30px;
+  padding: 3px 31px;
   background-color: #fff;
 }
 
 .chat-form-container form {
   display: flex;
+  border-style: none;
 }
 
 .chat-form-container input[type='text'] {
@@ -452,14 +488,21 @@ a {
   height: 100%;
   display: flex;
 }
-/* .drawing-board {
+
+.wrap {
   display: flex;
-  width: fit-content;
-  position: relative;
-  border: 1px solid #202020;
-  background-color: white;  
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.drawing-board {
+  /* position: relative; */
+  margin-left: 5rem;
   border-radius: 15px;
-} */
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
 
 #toolbar {
   display: flex;
@@ -473,10 +516,11 @@ a {
 }
 
 .canvas-tools {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
   /* width: 100%;
     height: 100%; */
 }
@@ -505,7 +549,7 @@ a {
 .canvas-tools button {
   align-items: center;
   background-color: #1565c0;
-  width: 50px;
+  width: 60px;
   height: 30px;
   margin-top: 22px;
   border: none;
@@ -519,10 +563,10 @@ a {
   color: #fff;
   /* border-top-left-radius: 5px;
   border-top-right-radius: 5px; */
-  padding: 0px;
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  display: flex;
+  width: auto;
 }
 
 .game-room-header p {
@@ -537,22 +581,36 @@ a {
   padding-top: 20px;
 }
 
-.randomWords {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-}
-
 #roomName {
-  /* padding-left: 200px; */
+  margin: 0;
+  text-align: center;
+  padding-inline-start: -25vw;
+  overflow: hidden;
 }
 
+/* 
 .time-currentDrawer {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: space-evenly;
+} */
 
 .who-is-drawing {
-  margin: 0 15px 10px 0;
+  margin-right: 15px;
+  font-size: 17px;
 }
+
+/* .userInfo {
+  margin-right: 15px;
+  font-size: 15px;
+} */
+
+.timer {
+  margin-left: 15px;
+  font-size: 17px;
+}
+
+/* .timeDisplay {
+  margin-left: 15px;
+  font-size: 15px;
+} */

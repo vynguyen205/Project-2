@@ -3,6 +3,11 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const currentPlayers = document.getElementById('players');
 const getWords = document.getElementById('words');
+const timeEl = document.querySelector('.timeDisplay');
+const whoIsDrawing = document.querySelector('.userInfo');
+
+let time = 60;
+let countdown;
 
 //when a user is connected a console log is displaying the user's id.
 
@@ -16,8 +21,6 @@ socket.on('message', (message) => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 });
-
-// socket.emit('💃🏻 Join Server', socket.id);
 
 //message event
 chatForm?.addEventListener('submit', (e) => {
@@ -87,45 +90,39 @@ const userList = () => {
 
 userList();
 
+//stop the game and emit to the server that the game is over and the timer should stop
+socket.on('stopGame', (data) => {
+  let user_name = window.location.search.split('=')[1];
+  let room_name = window.location.pathname.split('/')[3];
+  socket.emit('stopGame', JSON.stringify({ room_name, user_name }));
+  clearInterval(countdown);
+  timeEl.innerHTML = '🎉';
+  whoIsDrawing.innerHTML = 'GAME OVER';
+  //stop the timer when the user guesses the word right
+});
+
 socket.on('word selected', (data) => {
   //write logic for starting countdown or something on FE
 
   console.log('this person is drawing -', data.artist);
 
-  document.querySelector(
-    '.who-is-drawing'
-  ).innerHTML = `${data.artist} is drawing`;
+  whoIsDrawing.innerHTML = `🎨 ${data.artist} drawing`;
 
   startTimer();
 });
-//display time 60 seconds and count down
-// const timer = setInterval(() => {
-//   const timeEl = document.querySelector('.timer');
-//   timeEl.innerHTML = `Time Left - ${time}`;
-//   if (timeEl.innerHTML === 0) {
-//     clearInterval(timer);
-//     document.querySelector('.who-is-drawing').innerHTML = 'TIMES UP';
-//     //times up emit an event to end round, start next round?
-//   }
-//
-let time = 60;
-let countdown;
-const timeEl = document.querySelector('.timer');
 
 //start timer for drawing
 const startTimer = () => {
   countdown = setInterval(() => {
     time--;
-    timeEl.innerHTML = `Time Left - ${time}`;
+    timeEl.innerHTML = `⏱ ${time}`;
 
     if (time <= 0) {
       timeEl.innerHTML = 'GAME OVER';
       clearInterval(countdown);
     }
   }, 1000);
-
-}
-
+};
 
 //display random word and emit to one user only
 const displayRandomWord = () => {
@@ -134,13 +131,13 @@ const displayRandomWord = () => {
   console.log('clicked randomword');
 
   //if the button is clicked, then hide it when the user is drawing
-  document.querySelector('.start-btn').style.display = 'none';
+  document.querySelector('.newword').style.display = 'none';
   socket.emit('randomWord', JSON.stringify({ room_name, user_name }));
 };
 
 document
-  .querySelector('.start-btn')
-  .addEventListener('click', displayRandomWord);
+  .querySelector('.newword')
+  ?.addEventListener('click', displayRandomWord);
 
 //get random words to display to the dom
 // const randomWords = () => {
