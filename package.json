@@ -29,7 +29,6 @@
     "express-session": "^1.17.1",
     "inquire": "^0.4.8",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.18",
     "sequelize": "^6.3.5",
     "socket.io": "^4.5.1",
     "socket.io-client": "^2.5.0"
@@ -38,6 +37,7 @@
     "@types/socket.io": "^3.0.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^6.15.0",
+    "nodemon": "^2.0.19",
     "prettier": "^2.7.1"
   }
 }

@@ -3,7 +3,7 @@ const express = require('express');
 const chalk = require('chalk');
 const routes = require('./controllers');
 const http = require('http');
-const socket = require('socket.io');
+const socket = require('socket.io')(3000);
 
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
