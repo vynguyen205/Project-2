@@ -200,14 +200,20 @@ body {
   justify-content: center;
 }
 
-#join-room-btn, #create-room-btn {
+#join-room-btn, #create-room-btn, .gameCtrl {
   margin: auto;
   background: linear-gradient(90deg,rgba(129, 230, 217, 1) 0%,rgba(79, 209, 197, 1) 100%);
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(79, 209, 197, 0.64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
+  font-family: 'Nunito', sans-serif;
 } 
+
+.gameCtrl{
+  font-size: 10px;
+  font-family: 'Nunito', sans-serif;
+}
 
 /* home page modal styling */
 
