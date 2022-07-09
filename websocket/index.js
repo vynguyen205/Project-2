@@ -74,6 +74,7 @@ const createWSEvents = async (io) => {
         const { user_name, message, room_name } = JSON.parse(data);
         // socket.broadcast.emit('message', formatMessage('USER', message));
         console.log(chalk.blue(`Message Received: ${message}`));
+        
 
         //check to see if guessed word is correct
         if (message.toLowerCase() === randomWord.dataValues.word) {
