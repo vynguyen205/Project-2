@@ -95,5 +95,4 @@ const joinRoomFunction = async () => {
 };
 
 createRoomBtn?.addEventListener('click', createRoom);
-
 joinRoomBtn?.addEventListener('click', joinRoomFunction);

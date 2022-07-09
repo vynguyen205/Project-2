@@ -32,8 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 // this allows you to use a static folder (unchanged files)
 app.use(express.static(path.join(__dirname, 'public')));
 
-//blank users object to store all the users connected to the server
-let users = [];
+//blank users object to store all the users connected to the server;
 
 //settinng up event for when user connects
 //session config
@@ -62,11 +61,4 @@ sequelize.sync({ force: false }).then(() => {
       )
     )
   );
-  //having the server connect to the socket as soon as the server is running
-  // const io = socket(server);
-  // app.set('socketio', io);
-  // io.sockets.on('connection', (socket) => {
-  //   console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
-  //   socket.broadcast.emit('New User Connected: ', socket.id);
-  // });
 });
