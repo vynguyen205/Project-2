@@ -15,7 +15,7 @@ setup = () => {
   );
   socket.on('drawing', (data) => {
     console.log(data);
-    ellipse(data.x, data.y, 50, 50);
+    line(data.x, data.y, 50, 50);
   });
 };
 
@@ -63,7 +63,7 @@ const draw = (e) => {
   ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
   ctx.stroke();
 
-  ellipse(mouseX, mouseY, 50, 50);
+  line(mouseX, mouseY, 50, 50);
   socket.emit('drawing', { x: mouseX, y: mouseY });
 };
 
