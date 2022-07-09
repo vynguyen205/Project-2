@@ -14,7 +14,6 @@ const messages = {
   javascript: [],
 };
 const bot = 'DÜDLE Bot';
-const users = {};
 
 const createWSEvents = async (io) => {
   // io.on = promisify(io.on);
@@ -64,11 +63,12 @@ const createWSEvents = async (io) => {
           'message',
           formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
         );
-
+        console.log(`this is getting called`);
         //this runs when the user sends a message
         socket.on('Chat Message', async (data) => {
+          console.log(data);
           const { user_name, message, room_name } = JSON.parse(data);
-          // socket.broadcast.emit('message', formatMessage('USER', message));
+
           console.log(chalk.blue(`Message Received: ${message}`));
 
           //check to see if guessed word is correct

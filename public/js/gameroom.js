@@ -1,5 +1,3 @@
-// const socket = require('socket.io-client/lib/socket');
-
 //DOM ELEMENT
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
@@ -28,7 +26,9 @@ chatForm?.addEventListener('submit', (e) => {
   // get the query string params for user_name
   const user_name = window.location.search.split('=')[1];
   const room_name = window.location.pathname.split('/')[3];
+
   console.log('user', user_name, room_name);
+  //send the message to the server
   socket.emit(
     'Chat Message',
     JSON.stringify({ user_name, message, room_name })
@@ -74,7 +74,7 @@ const userList = () => {
     // console.log(room_id);
     //get the users in the room
     getData(`api/users/room_id/${room_id}`).then((data) => {
-      console.log(data);
+      // console.log(data);
       //loop through the users and display them in the DOM
       data.forEach((user) => {
         const li = document.createElement('li');
