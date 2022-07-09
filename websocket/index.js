@@ -16,6 +16,7 @@ const messages = {
 };
 const bot = 'DÜDLE Bot';
 const users = {};
+let randomWord = '';
 
 const createWSEvents = async (io) => {
   // io.on = promisify(io.on);
@@ -58,7 +59,7 @@ const createWSEvents = async (io) => {
         const { room_name, user_name } = JSON.parse(data);
 
         console.log(chalk.yellow('Getting Random Word: ', room_name));
-        const randomWord = await getRandomWord();
+        randomWord = await getRandomWord();
         io.to(room_name).emit('word selected', { artist: user_name });
 
         //broadcast to artist their word
@@ -75,16 +76,16 @@ const createWSEvents = async (io) => {
         console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
-        // if (message.toLowerCase() === randomWord.dataValues.word) {
-        //   io.to(socket.id).emit(
-        //     'message',
-        //     formatMessage(bot, `You guessed the word!`)
-        //   );
-        //   io.to(room_name).emit(
-        //     'message',
-        //     formatMessage(bot, `${user_name} guessed the word!`)
-        //   );
-        // }
+        if (message.toLowerCase() === randomWord.dataValues.word) {
+          io.to(socket.id).emit(
+            'message',
+            formatMessage(bot, `You guessed the word!`)
+          );
+          io.to(room_name).emit(
+            'message',
+            formatMessage(bot, `${user_name} guessed the word!`)
+          );
+        }
 
         io.to(room_name).emit('message', formatMessage(user_name, message));
       });
