@@ -38,7 +38,7 @@ const createWSEvents = async (io) => {
 
         console.log(chalk.yellow('Creating Room: ', room_name));
       });
-      
+
       socket.on('join room', (data) => {
         const { room_name, join_username } = JSON.parse(data);
         console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
@@ -75,16 +75,16 @@ const createWSEvents = async (io) => {
         console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
-        if (message.toLowerCase() === randomWord.dataValues.word) {
-          io.to(socket.id).emit(
-            'message',
-            formatMessage(bot, `You guessed the word!`)
-          );
-          io.to(room_name).emit(
-            'message',
-            formatMessage(bot, `${user_name} guessed the word!`)
-          );
-        }
+        // if (message.toLowerCase() === randomWord.dataValues.word) {
+        //   io.to(socket.id).emit(
+        //     'message',
+        //     formatMessage(bot, `You guessed the word!`)
+        //   );
+        //   io.to(room_name).emit(
+        //     'message',
+        //     formatMessage(bot, `${user_name} guessed the word!`)
+        //   );
+        // }
 
         io.to(room_name).emit('message', formatMessage(user_name, message));
       });
