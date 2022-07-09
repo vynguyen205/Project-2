@@ -5,60 +5,68 @@
             <a id="leave-btn" class="leave-btn">Leave Room</a>
           </header> --}}
         <div class="chat-sidebar">
-          <h3><i class="fas fa-users"></i> Curent Players</h3>
+           <h3 id="roomName"><i class="fas fa-comments"></i> Room Name: {{roomName}}</h3>
           <ul id="players"></ul>
         </div>
       </div>
     {{!-- drawing board insert --}}
      <section class="drawing-container">
-       {{!-- <div class="time-currentDrawer">
-          <div class="who-is-drawing">USER</div>
-          <div class="timer">TIME</div> 
-       </div> --}}
-         
-  
+       {{!-- <div class="wrap">
+          <div class="who-is-drawing">
+            <p class="userInfo"></p>
+          </div>
+          <div class="timer">
+              <p class="timeDisplay"></p>
+          </div> 
+      </div> --}}
+    <div>
         <div class="drawing-board">
             <canvas id="drawing-board"></canvas>
-        </div>
-        <div id="toolbar">
-            <h1>{{Draw}}</h1>
-            <div class="canvas-tools">
-              <div class="tool-align">
-                <label for="stroke">Stroke</label>
-                <input id="stroke" name="'stroke" type="color">
-              </div>
-              <div class="tool-align">
-                <label for="lineWidth">Line Width</label>
-                <input id="lineWidth" name="lineWidth" type="number" value="5">
-              </div>
-              <div class="tool-align">
-                <p>
-                  <button class="gameCtrl" id="clear">CLEAR</button>
-                </p>
-              </div>
-              <div>
-                <p>
-                  <button class="newword gameCtrl">START</button>
-                </p>
-              </div>
+          <div id="toolbar">
+              <h1>{{Draw}}</h1>
+              <div class="canvas-tools">
+                <div class="tool-align">
+                  <label for="stroke">Stroke</label>
+                  <input id="stroke" name="'stroke" type="color">
+                </div>
+                <div class="tool-align">
+                  <label for="lineWidth">Line Width</label>
+                  <input id="lineWidth" name="lineWidth" type="number" value="5">
+                </div>
+                <div class="tool-align">
+                  <p>
+                    <button class="gameCtrl" id="clear">CLEAR</button>
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <button class="newword gameCtrl">START</button>
+                  </p>
+                </div>
+          </div>
         </div>
     </section>
-    <div class="chat-container">
-      <main class="chat-main">
-        <div class="chat-messages">
-        </div>
-      </main>
-      <div class="chat-form-container">
-        <form id="chat-form">
-          <input
-            id="msg"
-            type="text"
-            placeholder="Guess Here ..."
-            required
-            autocomplete="off"
-          />
-          <button class="btn gameCtrl"><i class="fas fa-paper-plane"></i> SEND</button>
-        </form>
+    <div class="room-chat-head">
+      <div class="room-head">
+       {{!-- <h3 id="roomName"><i class="fas fa-comments"></i> Room Name: {{roomName}}</h3> --}}
       </div>
-
-  </div>
+      <div class="chat-container">
+        <main class="chat-main">
+          <div class="chat-messages">
+          </div>
+        </main>
+        <div class="chat-form-container">
+          <form id="chat-form">
+            <input
+              id="msg"
+              type="text"
+              placeholder="Guess Here ..."
+              required
+              autocomplete="off"
+            />
+            <button class="btn gameCtrl"><i class="fas fa-paper-plane"></i> SEND</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  

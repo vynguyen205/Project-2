@@ -4,13 +4,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 
-/* :root {
-  --dark-color-a: #667aff;
+:root {
+  /* --dark-color-a: #667aff; */
   --dark-color-b: #7386ff;
-  --light-color: #e6e9ff;
-  --success-color: #5cb85c;
-  --error-color: #d9534f;
-} */
+  /* --light-color: #e6e9ff; */
+  /* --success-color: #5cb85c;
+  --error-color: #d9534f; */
+}
 
 /* X */
 
@@ -330,12 +330,13 @@ header,
 /* Chat box */
 
 .chat-container {
-  max-width: 40%;
+  /* max-width: 40%; */
   height: fit-content;
   background: #fff;
   margin: 10px;
   overflow: hidden;
   border-radius: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 #msg {
@@ -355,8 +356,9 @@ header,
 }
 
 .chat-main {
-  height: 36vh;
+  height: 22rem;
   display: grid;
+  background-color: --dark-color-b;
   /* grid-template-columns: 1fr 3fr; */
 }
 
@@ -379,14 +381,21 @@ header,
   margin-bottom: 15px;
 }
 
+#players {
+  text-align: center;
+  font-size: 20px;
+}
+
 .chat-sidebar ul li {
   padding: 10px 0;
 }
 
 .chat-messages {
-  padding: 30px;
-  max-height: 500px;
+  padding: 23px;
+  height: 19rem;
   overflow-y: scroll;
+  border-radius: 19px;
+  /* background: #f2f2f2; */
 }
 
 .chat-messages .message {
@@ -410,12 +419,13 @@ header,
 }
 
 .chat-form-container {
-  padding: 20px 30px;
+  padding: 3px 31px;
   background-color: #fff;
 }
 
 .chat-form-container form {
   display: flex;
+  border-style: none;
 }
 
 .chat-form-container input[type='text'] {
@@ -478,14 +488,21 @@ a {
   height: 100%;
   display: flex;
 }
-/* .drawing-board {
+
+.wrap {
   display: flex;
-  width: fit-content;
-  position: relative;
-  border: 1px solid #202020;
-  background-color: white;  
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.drawing-board {
+  /* position: relative; */
+  margin-left: 5rem;
   border-radius: 15px;
-} */
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
 
 #toolbar {
   display: flex;
@@ -499,10 +516,11 @@ a {
 }
 
 .canvas-tools {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
   /* width: 100%;
     height: 100%; */
 }
@@ -546,7 +564,7 @@ a {
   /* border-top-left-radius: 5px;
   border-top-right-radius: 5px; */
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   display: flex;
   width: auto;
 }
@@ -566,7 +584,7 @@ a {
 #roomName {
   margin: 0;
   text-align: center;
-  padding-inline-start: 8vw;
+  padding-inline-start: -25vw;
   overflow: hidden;
 }
 
@@ -578,25 +596,21 @@ a {
 } */
 
 .who-is-drawing {
-  align-items: center;
-  justify-content: left;
+  margin-right: 15px;
+  font-size: 17px;
 }
 
-.userInfo {
-  margin: 0;
-  text-align: center;
-  padding-inline-start: 25vw;
-  overflow: hidden;
-}
+/* .userInfo {
+  margin-right: 15px;
+  font-size: 15px;
+} */
 
 .timer {
-  align-items: center;
-  justify-content: left;
+  margin-left: 15px;
+  font-size: 17px;
 }
 
-.timeDisplay {
-  margin: 0;
-  text-align: center;
-  padding-inline-start: 5vw;
-  overflow: hidden;
-}
+/* .timeDisplay {
+  margin-left: 15px;
+  font-size: 15px;
+} */

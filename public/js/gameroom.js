@@ -106,7 +106,7 @@ socket.on('word selected', (data) => {
 
   console.log('this person is drawing -', data.artist);
 
-  whoIsDrawing.innerHTML = `${data.artist} is drawing`;
+  whoIsDrawing.innerHTML = `🎨 ${data.artist} drawing`;
 
   startTimer();
 });
@@ -115,7 +115,7 @@ socket.on('word selected', (data) => {
 const startTimer = () => {
   countdown = setInterval(() => {
     time--;
-    timeEl.innerHTML = `Time Left - ${time}`;
+    timeEl.innerHTML = `⏱ ${time}`;
 
     if (time <= 0) {
       timeEl.innerHTML = 'GAME OVER';
