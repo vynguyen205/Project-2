@@ -5,6 +5,7 @@ const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
 const getRandomWord = require('../logic/getRandomWord');
+// const { getCurrentUser } = require('../logic/user');
 
 //past messages that were stored in the database
 const messages = {
@@ -14,6 +15,7 @@ const messages = {
   javascript: [],
 };
 const bot = 'DÜDLE Bot';
+const users = {};
 
 const createWSEvents = async (io) => {
   // io.on = promisify(io.on);
@@ -54,6 +56,7 @@ const createWSEvents = async (io) => {
       socket.on('randomWord', async (data) => {
         console.log('socket', socket);
         const { room_name, user_name } = JSON.parse(data);
+
         console.log(chalk.yellow('Getting Random Word: ', room_name));
         const randomWord = await getRandomWord();
         io.to(room_name).emit('word selected', { artist: user_name });
@@ -63,24 +66,33 @@ const createWSEvents = async (io) => {
           'message',
           formatMessage(bot, `Your word is: ${randomWord.dataValues.word}`)
         );
-        console.log(`this is getting called`);
-        //this runs when the user sends a message
-        socket.on('Chat Message', async (data) => {
-          console.log(data);
-          const { user_name, message, room_name } = JSON.parse(data);
+      });
 
-          console.log(chalk.blue(`Message Received: ${message}`));
+      //this runs when the user sends a message
+      socket.on('Chat Message', async (data) => {
+        const { user_name, message, room_name } = JSON.parse(data);
+        // socket.broadcast.emit('message', formatMessage('USER', message));
+        console.log(chalk.blue(`Message Received: ${message}`));
 
-          //check to see if guessed word is correct
+        //check to see if guessed word is correct
+        // if (message.toLowerCase() === randomWord.dataValues.word) {
+        //   io.to(socket.id).emit(
+        //     'message',
+        //     formatMessage(bot, `You guessed the word!`)
+        //   );
+        //   io.to(room_name).emit(
+        //     'message',
+        //     formatMessage(bot, `${user_name} guessed the word!`)
+        //   );
+        // }
 
-          io.to(room_name).emit('message', formatMessage(user_name, message));
-        });
+        io.to(room_name).emit('message', formatMessage(user_name, message));
+      });
 
-        //this runs when the user disconnects from the server
-        socket.on('disconnect', () => {
-          //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
-          io.emit('message', 'A user has left the room');
-        });
+      //this runs when the user disconnects from the server
+      socket.on('disconnect', () => {
+        //broadcasting the user to all other users. letting them know that a user has left and there's only that many users left
+        io.emit('message', 'A user has left the room');
       });
     });
   } catch (err) {
@@ -89,7 +101,6 @@ const createWSEvents = async (io) => {
     );
   }
 };
-
 const initSocket = (server) => {
   const io = socket(server);
   createWSEvents(io);
