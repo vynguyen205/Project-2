@@ -1,6 +1,6 @@
 # DÜDL
 
-    Inspired by the legendary Pictionary game, The DUDL APP is a great way for inviting friends together online and have a quick game of draw & guess! User can hop into a Room with friends and enjoy a fun time in the colorful world of DUDL!
+    Inspired by the legendary Pictionary game.
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
