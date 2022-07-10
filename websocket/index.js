@@ -1,6 +1,6 @@
 const socket = require('socket.io');
 const formatMessage = require('../logic/message');
-// const chalk = require('chalk');
+const chalk = require('chalk');
 const { promisify } = require('util');
 const { User, Room } = require('../models');
 const { json } = require('express/lib/response');
@@ -18,21 +18,6 @@ const createWSEvents = async (io) => {
     //this runs when the user connects to the server
     io.on('connection', (socket) => {
       // console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
-
-      // console.log(`creating Room`);
-      // socket.on('createRoom', () => {
-      //   const { room_name, user_name } = JSON.parse(data);
-      //   console.log('CREETE ROOM');
-      //   // const newUser = {
-      //   //     user_id: user.id,
-      //   //     socket_id: socket.id,
-      //   // }
-      //   //check to see if someone already made a room with the same id
-
-      //   console.log(chalk.cyan(room_name, user_name));
-
-      //   console.log(chalk.yellow('Creating Room: ', room_name));
-      // });
 
       socket.on('join room', (data) => {
         const { room_name, join_username } = JSON.parse(data);
@@ -96,8 +81,7 @@ const createWSEvents = async (io) => {
     });
   } catch (err) {
     console.log(
-      // chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
-      err
+      chalk.redBright(`🚨🚨🚨 SOMETHING WENT WRONG 🚨🚨🚨`, JSON.stringify(err))
     );
   }
 };

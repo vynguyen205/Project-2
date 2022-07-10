@@ -12,8 +12,6 @@ const path = require('path');
 const session = require('express-session');
 
 const sequelize = require('./config/connection');
-// const { quiet } = require('nodemon/lib/utils');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const server = http.createServer(app);
