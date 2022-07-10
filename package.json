@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
   "repository": {
@@ -31,7 +31,8 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
     "socket.io": "^4.5.1",
-    "socket.io-client": "^2.5.0"
+    "socket.io-client": "^2.5.0",
+    "start": "^5.1.0"
   },
   "devDependencies": {
     "@types/socket.io": "^3.0.2",

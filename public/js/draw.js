@@ -1,3 +1,5 @@
+const { json } = require('express/lib/response');
+
 const canvas = document.getElementById('drawing-board');
 const toolbar = document.getElementById('toolbar');
 const ctx = canvas?.getContext('2d');
@@ -5,23 +7,9 @@ const ctx = canvas?.getContext('2d');
 const canvasOffsetX = canvas?.offsetLeft;
 const canvasOffsetY = canvas?.offsetTop;
 
-// canvas.width = window.innerWidth - canvasOffsetX;
-// canvas.height = window.innerHeight - canvasOffsetY;
-
-// receive from socket server
-// setup = () => {
-//   console.log(room_name, user_name);
-//   socket = io.connect(
-//     `http://localhost:3001/game/room_name/${room_name}?user_name=${user_name}`
-//   );
-//   socket.on('drawing-board', (data) => {
-//     console.log(data);
-//     line(data.x, data.y, 50, 50);
-//   });
-// };
-
 socket.on('drawing-board', (data) => {
   console.log(data);
+
   draw({ clientX: data.x, clientY: data.y }, false);
 });
 

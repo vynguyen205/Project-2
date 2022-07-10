@@ -8,7 +8,7 @@ const getRandomWord = require('../logic/getRandomWord');
 // const { getCurrentUser } = require('../logic/user');
 
 //past messages that were stored in the database
-const bot = 'DÜDLE Bot';
+const bot = 'DÜDL Bot';
 const users = {};
 let randomWord = '';
 
@@ -17,26 +17,11 @@ const createWSEvents = async (io) => {
   try {
     //this runs when the user connects to the server
     io.on('connection', (socket) => {
-      console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
-
-      // console.log(`creating Room`);
-      // socket.on('createRoom', () => {
-      //   const { room_name, user_name } = JSON.parse(data);
-      //   console.log('CREETE ROOM');
-      //   // const newUser = {
-      //   //     user_id: user.id,
-      //   //     socket_id: socket.id,
-      //   // }
-      //   //check to see if someone already made a room with the same id
-
-      //   console.log(chalk.cyan(room_name, user_name));
-
-      //   console.log(chalk.yellow('Creating Room: ', room_name));
-      // });
+      // console.log(chalk.green('CONNECTED TO SOCKET!!! SOCKET ID:', socket.id));
 
       socket.on('join room', (data) => {
         const { room_name, join_username } = JSON.parse(data);
-        console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
+        // console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!`, room_name, join_username);
         // const newUser = userJoin(username, room, socket.id )
 
         socket.join(room_name); // needs a unique identifier for the rooom
@@ -53,7 +38,7 @@ const createWSEvents = async (io) => {
         console.log('socket', socket);
         const { room_name, user_name } = JSON.parse(data);
 
-        console.log(chalk.yellow('Getting Random Word: ', room_name));
+        // console.log(chalk.yellow('Getting Random Word: ', room_name));
         randomWord = await getRandomWord();
         io.to(room_name).emit('word selected', { artist: user_name });
 
@@ -67,7 +52,7 @@ const createWSEvents = async (io) => {
       //this runs when the user sends a message
       socket.on('Chat Message', async (data) => {
         const { user_name, message, room_name } = JSON.parse(data);
-        console.log(chalk.blue(`Message Received: ${message}`));
+        // console.log(chalk.blue(`Message Received: ${message}`));
 
         //check to see if guessed word is correct
         if (message.toLowerCase() === randomWord?.dataValues?.word) {
@@ -78,7 +63,6 @@ const createWSEvents = async (io) => {
 
           io.to(room_name).emit('stopGame');
           io.to(socket.id).emit('message', formatMessage(user_name, message));
-          
         } else {
           io.to(room_name).emit('message', formatMessage(user_name, message));
         }
